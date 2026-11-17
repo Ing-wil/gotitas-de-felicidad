@@ -1,0 +1,1488 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Administrador | Goticas de Felicidad</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f4f4f4;
+      color: #222;
+    }
+
+    /* LOGIN */
+
+    .login-container {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      background: linear-gradient(135deg, #111111, #2b2b2b);
+    }
+
+    .login-box {
+      width: 100%;
+      max-width: 420px;
+      background: white;
+      padding: 35px;
+      border-radius: 18px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.35);
+      text-align: center;
+    }
+
+    .login-logo {
+      width: 150px;
+      max-width: 100%;
+      margin-bottom: 20px;
+    }
+
+    .login-box h1 {
+      color: #c40000;
+      margin-bottom: 8px;
+      font-size: 27px;
+    }
+
+    .login-box p {
+      color: #666;
+      margin-bottom: 25px;
+      font-size: 14px;
+    }
+
+    .input-group {
+      text-align: left;
+      margin-bottom: 18px;
+    }
+
+    .input-group label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 7px;
+      font-size: 14px;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 15px;
+      outline: none;
+    }
+
+    .input-group input:focus {
+      border-color: #c40000;
+    }
+
+    .login-button {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 8px;
+      background: #c40000;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .login-button:hover {
+      background: #9e0000;
+    }
+
+    .login-message {
+      margin-top: 15px;
+      min-height: 20px;
+      font-size: 14px;
+      color: #c40000;
+    }
+
+    /* PANEL */
+
+    .admin-panel {
+      display: none;
+      min-height: 100vh;
+    }
+
+    .topbar {
+      background: #111;
+      color: white;
+      min-height: 70px;
+      padding: 12px 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .topbar-left {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .topbar-logo {
+      width: 55px;
+      height: 55px;
+      object-fit: contain;
+      background: white;
+      border-radius: 50%;
+      padding: 4px;
+    }
+
+    .topbar h2 {
+      font-size: 19px;
+    }
+
+    .logout-button {
+      background: #c40000;
+      color: white;
+      border: none;
+      padding: 10px 17px;
+      border-radius: 7px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .logout-button:hover {
+      background: #9e0000;
+    }
+
+    .layout {
+      display: flex;
+      min-height: calc(100vh - 70px);
+    }
+
+    /* SIDEBAR */
+
+    .sidebar {
+      width: 250px;
+      background: #181818;
+      color: white;
+      padding: 25px 15px;
+    }
+
+    .sidebar h3 {
+      font-size: 13px;
+      color: #aaa;
+      margin: 0 12px 12px;
+      text-transform: uppercase;
+    }
+
+    .menu-button {
+      width: 100%;
+      background: transparent;
+      color: white;
+      border: none;
+      text-align: left;
+      padding: 13px 14px;
+      border-radius: 7px;
+      margin-bottom: 5px;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    .menu-button:hover,
+    .menu-button.active {
+      background: #c40000;
+    }
+
+    /* CONTENT */
+
+    .content {
+      flex: 1;
+      padding: 30px;
+      max-width: 1400px;
+    }
+
+    .section {
+      display: none;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    .page-title {
+      margin-bottom: 25px;
+    }
+
+    .page-title h1 {
+      font-size: 30px;
+      margin-bottom: 6px;
+    }
+
+    .page-title p {
+      color: #666;
+    }
+
+    /* CARDS */
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 22px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+    }
+
+    .card h3 {
+      color: #555;
+      font-size: 15px;
+      margin-bottom: 10px;
+    }
+
+    .card .number {
+      font-size: 30px;
+      font-weight: bold;
+      color: #c40000;
+    }
+
+    /* FORMS */
+
+    .form-card {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+      margin-bottom: 25px;
+    }
+
+    .form-card h2 {
+      margin-bottom: 20px;
+      font-size: 21px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group.full {
+      grid-column: 1 / -1;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: bold;
+      font-size: 14px;
+      margin-bottom: 7px;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 7px;
+      font-size: 14px;
+      font-family: inherit;
+    }
+
+    .form-group textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .save-button {
+      background: #008f39;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 7px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .save-button:hover {
+      background: #006f2c;
+    }
+
+    .secondary-button {
+      background: #333;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 7px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    /* PRODUCTS */
+
+    .product-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .product-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+
+    .product-image {
+      height: 180px;
+      background: #eee;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #777;
+    }
+
+    .product-info {
+      padding: 17px;
+    }
+
+    .product-info h3 {
+      margin-bottom: 8px;
+    }
+
+    .product-price {
+      color: #c40000;
+      font-weight: bold;
+      font-size: 17px;
+      margin-bottom: 10px;
+    }
+
+    .product-description {
+      color: #666;
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+
+    .product-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .edit-button,
+    .delete-button {
+      border: none;
+      padding: 9px 13px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .edit-button {
+      background: #222;
+      color: white;
+    }
+
+    .delete-button {
+      background: #c40000;
+      color: white;
+    }
+
+    /* MEDIA */
+
+    .upload-area {
+      border: 2px dashed #bbb;
+      border-radius: 10px;
+      padding: 30px;
+      text-align: center;
+      background: #fafafa;
+      margin-bottom: 20px;
+    }
+
+    .upload-area p {
+      color: #666;
+      margin-bottom: 15px;
+    }
+
+    /* ALERT */
+
+    .alert {
+      display: none;
+      padding: 13px 16px;
+      border-radius: 7px;
+      margin-bottom: 20px;
+      font-size: 14px;
+    }
+
+    .alert.success {
+      display: block;
+      background: #e7f7ed;
+      color: #08752f;
+      border: 1px solid #b9e6c8;
+    }
+
+    .alert.error {
+      display: block;
+      background: #fdeaea;
+      color: #a00000;
+      border: 1px solid #f0bcbc;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 1000px) {
+      .cards {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .product-list {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .sidebar {
+        width: 210px;
+      }
+    }
+
+    @media (max-width: 750px) {
+      .layout {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+        padding: 12px;
+      }
+
+      .sidebar h3 {
+        display: none;
+      }
+
+      .menu-button {
+        display: inline-block;
+        width: auto;
+        margin-right: 5px;
+      }
+
+      .content {
+        padding: 20px;
+      }
+
+      .cards,
+      .product-list,
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form-group.full {
+        grid-column: auto;
+      }
+
+      .topbar {
+        padding: 10px 15px;
+      }
+
+      .topbar h2 {
+        font-size: 15px;
+      }
+
+      .topbar-logo {
+        width: 45px;
+        height: 45px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ========================= -->
+<!-- LOGIN -->
+<!-- ========================= -->
+
+<div id="loginScreen" class="login-container">
+
+  <div class="login-box">
+
+    <img
+      src="logo-png.2.png"
+      alt="Goticas de Felicidad"
+      class="login-logo"
+    >
+
+    <h1>Panel de administrador</h1>
+
+    <p>
+      Accede para administrar el contenido de Goticas de Felicidad.
+    </p>
+
+    <form id="loginForm">
+
+      <div class="input-group">
+        <label for="email">Usuario / correo</label>
+
+        <input
+          type="email"
+          id="email"
+          placeholder="Correo del administrador"
+          required
+        >
+      </div>
+
+      <div class="input-group">
+        <label for="password">Contraseña</label>
+
+        <input
+          type="password"
+          id="password"
+          placeholder="Contraseña"
+          required
+        >
+      </div>
+
+      <button type="submit" class="login-button">
+        Iniciar sesión
+      </button>
+
+      <div id="loginMessage" class="login-message"></div>
+
+    </form>
+
+  </div>
+
+</div>
+
+
+<!-- ========================= -->
+<!-- PANEL ADMINISTRADOR -->
+<!-- ========================= -->
+
+<div id="adminPanel" class="admin-panel">
+
+  <!-- TOPBAR -->
+
+  <header class="topbar">
+
+    <div class="topbar-left">
+
+      <img
+        src="logo-png.2.png"
+        alt="Goticas de Felicidad"
+        class="topbar-logo"
+      >
+
+      <div>
+        <h2>Administración de Goticas de Felicidad</h2>
+      </div>
+
+    </div>
+
+    <button id="logoutButton" class="logout-button">
+      Cerrar sesión
+    </button>
+
+  </header>
+
+
+  <div class="layout">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+      <h3>Administración</h3>
+
+      <button
+        class="menu-button active"
+        onclick="showSection('inicio', this)"
+      >
+        Inicio
+      </button>
+
+      <button
+        class="menu-button"
+        onclick="showSection('productos', this)"
+      >
+        Productos
+      </button>
+
+      <button
+        class="menu-button"
+        onclick="showSection('galeria', this)"
+      >
+        Galería
+      </button>
+
+      <button
+        class="menu-button"
+        onclick="showSection('textos', this)"
+      >
+        Textos de la página
+      </button>
+
+      <button
+        class="menu-button"
+        onclick="showSection('contacto', this)"
+      >
+        Contacto
+      </button>
+
+      <button
+        class="menu-button"
+        onclick="showSection('google', this)"
+      >
+        Reseñas de Google
+      </button>
+
+    </aside>
+
+
+    <!-- CONTENT -->
+
+    <main class="content">
+
+      <!-- ========================= -->
+      <!-- INICIO -->
+      <!-- ========================= -->
+
+      <section id="inicio" class="section active">
+
+        <div class="page-title">
+
+          <h1>Panel principal</h1>
+
+          <p>
+            Administración del contenido de Goticas de Felicidad.
+          </p>
+
+        </div>
+
+
+        <div class="cards">
+
+          <div class="card">
+            <h3>Productos</h3>
+            <div class="number" id="productCount">0</div>
+          </div>
+
+          <div class="card">
+            <h3>Fotografías</h3>
+            <div class="number" id="photoCount">0</div>
+          </div>
+
+          <div class="card">
+            <h3>Videos</h3>
+            <div class="number" id="videoCount">0</div>
+          </div>
+
+        </div>
+
+
+        <div class="form-card">
+
+          <h2>Bienvenido al administrador</h2>
+
+          <p style="line-height: 1.7; color: #555;">
+
+            Desde este panel podrás administrar los productos,
+            fotografías, videos, textos y datos de contacto de
+            Goticas de Felicidad.
+
+            <br><br>
+
+            La conexión con la base de datos y el almacenamiento
+            de fotografías se configurará en el siguiente paso.
+
+          </p>
+
+        </div>
+
+      </section>
+
+
+      <!-- ========================= -->
+      <!-- PRODUCTOS -->
+      <!-- ========================= -->
+
+      <section id="productos" class="section">
+
+        <div class="page-title">
+
+          <h1>Productos</h1>
+
+          <p>
+            Administra los desayunos, anchetas y demás productos.
+          </p>
+
+        </div>
+
+
+        <div id="productAlert" class="alert"></div>
+
+
+        <div class="form-card">
+
+          <h2>Agregar producto</h2>
+
+          <form id="productForm">
+
+            <div class="form-grid">
+
+              <div class="form-group">
+
+                <label for="productName">
+                  Nombre del producto
+                </label>
+
+                <input
+                  type="text"
+                  id="productName"
+                  placeholder="Ejemplo: Desayuno sorpresa"
+                  required
+                >
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="productCategory">
+                  Categoría
+                </label>
+
+                <select id="productCategory" required>
+
+                  <option value="">
+                    Seleccionar categoría
+                  </option>
+
+                  <option value="Desayunos">
+                    Desayunos sorpresa
+                  </option>
+
+                  <option value="Anchetas">
+                    Anchetas y detalles
+                  </option>
+
+                  <option value="Decoraciones">
+                    Decoraciones y fiestas
+                  </option>
+
+                </select>
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="productPrice">
+                  Precio
+                </label>
+
+                <input
+                  type="number"
+                  id="productPrice"
+                  placeholder="Ejemplo: 120000"
+                  min="0"
+                  required
+                >
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="productImage">
+                  Fotografía
+                </label>
+
+                <input
+                  type="file"
+                  id="productImage"
+                  accept="image/*"
+                >
+
+              </div>
+
+
+              <div class="form-group full">
+
+                <label for="productDescription">
+                  Descripción
+                </label>
+
+                <textarea
+                  id="productDescription"
+                  placeholder="Describe el producto..."
+                  required
+                ></textarea>
+
+              </div>
+
+            </div>
+
+
+            <button type="submit" class="save-button">
+              Guardar producto
+            </button>
+
+          </form>
+
+        </div>
+
+
+        <div class="form-card">
+
+          <h2>Productos registrados</h2>
+
+          <div id="productList" class="product-list">
+
+            <div class="product-card">
+
+              <div class="product-image">
+                Sin productos registrados
+              </div>
+
+              <div class="product-info">
+
+                <h3>
+                  Aún no hay productos
+                </h3>
+
+                <p class="product-description">
+                  Los productos que agregues aparecerán aquí.
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ========================= -->
+      <!-- GALERÍA -->
+      <!-- ========================= -->
+
+      <section id="galeria" class="section">
+
+        <div class="page-title">
+
+          <h1>Galería</h1>
+
+          <p>
+            Administra las fotografías y videos de la página.
+          </p>
+
+        </div>
+
+
+        <div class="form-card">
+
+          <h2>Subir fotografías</h2>
+
+          <div class="upload-area">
+
+            <p>
+              Selecciona una o varias fotografías para la galería.
+            </p>
+
+            <input
+              type="file"
+              id="galleryImages"
+              accept="image/*"
+              multiple
+            >
+
+          </div>
+
+          <button
+            class="save-button"
+            type="button"
+            onclick="uploadImages()"
+          >
+            Subir fotografías
+          </button>
+
+        </div>
+
+
+        <div class="form-card">
+
+          <h2>Subir videos</h2>
+
+          <div class="upload-area">
+
+            <p>
+              Selecciona un video para agregarlo a la galería.
+            </p>
+
+            <input
+              type="file"
+              id="galleryVideos"
+              accept="video/*"
+              multiple
+            >
+
+          </div>
+
+          <button
+            class="save-button"
+            type="button"
+            onclick="uploadVideos()"
+          >
+            Subir videos
+          </button>
+
+        </div>
+
+      </section>
+
+
+      <!-- ========================= -->
+      <!-- TEXTOS -->
+      <!-- ========================= -->
+
+      <section id="textos" class="section">
+
+        <div class="page-title">
+
+          <h1>Textos de la página</h1>
+
+          <p>
+            Modifica los textos que aparecen en la página principal.
+          </p>
+
+        </div>
+
+
+        <div class="form-card">
+
+          <form id="textsForm">
+
+            <div class="form-group">
+
+              <label for="heroTitle">
+                Título principal
+              </label>
+
+              <input
+                type="text"
+                id="heroTitle"
+                value="Creamos momentos que hacen sonreír"
+              >
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label for="heroDescription">
+                Descripción principal
+              </label>
+
+              <textarea id="heroDescription">Sorprende a quienes más quieres con desayunos, detalles y decoraciones hechas con cariño.</textarea>
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label for="aboutText">
+                Texto de Nosotros
+              </label>
+
+              <textarea id="aboutText">En Goticas de Felicidad creamos detalles pensados para convertir momentos especiales en recuerdos inolvidables.</textarea>
+
+            </div>
+
+
+            <button
+              type="submit"
+              class="save-button"
+            >
+              Guardar textos
+            </button>
+
+          </form>
+
+        </div>
+
+      </section>
+
+
+      <!-- ========================= -->
+      <!-- CONTACTO -->
+      <!-- ========================= -->
+
+      <section id="contacto" class="section">
+
+        <div class="page-title">
+
+          <h1>Información de contacto</h1>
+
+          <p>
+            Administra los datos que utilizarán los clientes.
+          </p>
+
+        </div>
+
+
+        <div class="form-card">
+
+          <form id="contactForm">
+
+            <div class="form-group">
+
+              <label for="whatsapp">
+                Número de WhatsApp
+              </label>
+
+              <input
+                type="text"
+                id="whatsapp"
+                value="3142955025"
+              >
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label for="tiktok">
+                Usuario de TikTok
+              </label>
+
+              <input
+                type="text"
+                id="tiktok"
+                value="@johannarojas1989"
+              >
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label for="address">
+                Dirección
+              </label>
+
+              <input
+                type="text"
+                id="address"
+                placeholder="Dirección del negocio"
+              >
+
+            </div>
+
+
+            <button
+              type="submit"
+              class="save-button"
+            >
+              Guardar información
+            </button>
+
+          </form>
+
+        </div>
+
+      </section>
+
+
+      <!-- ========================= -->
+      <!-- GOOGLE -->
+      <!-- ========================= -->
+
+      <section id="google" class="section">
+
+        <div class="page-title">
+
+          <h1>Reseñas de Google</h1>
+
+          <p>
+            Configura el enlace que llevará directamente a los clientes
+            al formulario para dejar una reseña.
+          </p>
+
+        </div>
+
+
+        <div class="form-card">
+
+          <h2>Enlace de reseñas</h2>
+
+          <div class="form-group">
+
+            <label for="googleReviewUrl">
+              URL de Google Reviews
+            </label>
+
+            <input
+              type="url"
+              id="googleReviewUrl"
+              placeholder="Pega aquí el enlace de reseñas de Google"
+            >
+
+          </div>
+
+
+          <button
+            type="button"
+            class="save-button"
+            onclick="saveGoogleReviewUrl()"
+          >
+            Guardar enlace
+          </button>
+
+
+          <div
+            id="googleMessage"
+            class="alert"
+            style="margin-top: 20px;"
+          ></div>
+
+        </div>
+
+
+        <div class="form-card">
+
+          <h2>¿Cómo funcionará?</h2>
+
+          <p style="line-height: 1.7; color: #555;">
+
+            Una vez configurado el enlace, el botón de reseñas
+            de la página principal enviará al cliente directamente
+            al sitio de Google donde podrá escribir y publicar
+            su reseña.
+
+          </p>
+
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+</div>
+
+
+<script>
+
+/* ==========================================
+   LOGIN TEMPORAL
+========================================== */
+
+/*
+  IMPORTANTE:
+
+  Esta pantalla todavía no realiza una autenticación real.
+
+  En el siguiente paso conectaremos este panel con Supabase
+  para utilizar usuario y contraseña de forma segura.
+*/
+
+const loginForm = document.getElementById("loginForm");
+
+loginForm.addEventListener("submit", function(event) {
+
+  event.preventDefault();
+
+  const message = document.getElementById("loginMessage");
+
+  message.textContent =
+    "El acceso se conectará con Supabase en el siguiente paso.";
+
+});
+
+
+/* ==========================================
+   NAVEGACIÓN
+========================================== */
+
+function showSection(sectionId, button) {
+
+  const sections = document.querySelectorAll(".section");
+
+  sections.forEach(function(section) {
+    section.classList.remove("active");
+  });
+
+
+  const selectedSection =
+    document.getElementById(sectionId);
+
+  if (selectedSection) {
+    selectedSection.classList.add("active");
+  }
+
+
+  const buttons =
+    document.querySelectorAll(".menu-button");
+
+  buttons.forEach(function(btn) {
+    btn.classList.remove("active");
+  });
+
+
+  if (button) {
+    button.classList.add("active");
+  }
+
+}
+
+
+/* ==========================================
+   PRODUCTOS
+========================================== */
+
+const productForm =
+  document.getElementById("productForm");
+
+
+productForm.addEventListener("submit", function(event) {
+
+  event.preventDefault();
+
+  const name =
+    document.getElementById("productName").value;
+
+  const category =
+    document.getElementById("productCategory").value;
+
+  const price =
+    document.getElementById("productPrice").value;
+
+  const description =
+    document.getElementById("productDescription").value;
+
+
+  const list =
+    document.getElementById("productList");
+
+
+  const card =
+    document.createElement("div");
+
+  card.className = "product-card";
+
+
+  card.innerHTML = `
+
+    <div class="product-image">
+      Imagen pendiente de almacenamiento
+    </div>
+
+    <div class="product-info">
+
+      <h3>${name}</h3>
+
+      <div class="product-price">
+        $${Number(price).toLocaleString("es-CO")}
+      </div>
+
+      <p style="font-size:13px; color:#888; margin-bottom:8px;">
+        ${category}
+      </p>
+
+      <p class="product-description">
+        ${description}
+      </p>
+
+      <div class="product-actions">
+
+        <button
+          class="edit-button"
+          type="button"
+        >
+          Editar
+        </button>
+
+        <button
+          class="delete-button"
+          type="button"
+          onclick="this.closest('.product-card').remove()"
+        >
+          Eliminar
+        </button>
+
+      </div>
+
+    </div>
+
+  `;
+
+
+  list.appendChild(card);
+
+
+  productForm.reset();
+
+
+  const alert =
+    document.getElementById("productAlert");
+
+  alert.className = "alert success";
+
+  alert.textContent =
+    "Producto agregado temporalmente. La conexión permanente se realizará con Supabase.";
+
+});
+
+
+/* ==========================================
+   GALERÍA
+========================================== */
+
+function uploadImages() {
+
+  const files =
+    document.getElementById("galleryImages").files;
+
+  if (files.length === 0) {
+
+    alert("Selecciona al menos una fotografía.");
+
+    return;
+  }
+
+
+  alert(
+    "Las fotografías quedarán almacenadas cuando conectemos Supabase Storage."
+  );
+
+}
+
+
+function uploadVideos() {
+
+  const files =
+    document.getElementById("galleryVideos").files;
+
+  if (files.length === 0) {
+
+    alert("Selecciona al menos un video.");
+
+    return;
+  }
+
+
+  alert(
+    "Los videos quedarán almacenados cuando conectemos Supabase Storage."
+  );
+
+}
+
+
+/* ==========================================
+   TEXTOS
+========================================== */
+
+const textsForm =
+  document.getElementById("textsForm");
+
+
+textsForm.addEventListener("submit", function(event) {
+
+  event.preventDefault();
+
+  alert(
+    "Los textos se guardarán permanentemente cuando conectemos la base de datos."
+  );
+
+});
+
+
+/* ==========================================
+   CONTACTO
+========================================== */
+
+const contactForm =
+  document.getElementById("contactForm");
+
+
+contactForm.addEventListener("submit", function(event) {
+
+  event.preventDefault();
+
+  alert(
+    "La información de contacto se guardará permanentemente cuando conectemos la base de datos."
+  );
+
+});
+
+
+/* ==========================================
+   GOOGLE REVIEWS
+========================================== */
+
+function saveGoogleReviewUrl() {
+
+  const url =
+    document.getElementById("googleReviewUrl").value.trim();
+
+  const message =
+    document.getElementById("googleMessage");
+
+
+  if (!url) {
+
+    message.className = "alert error";
+
+    message.textContent =
+      "Debes ingresar el enlace de Google Reviews.";
+
+    return;
+  }
+
+
+  message.className = "alert success";
+
+  message.textContent =
+    "El enlace fue recibido. En la siguiente etapa lo conectaremos con la página pública.";
+
+}
+
+
+/* ==========================================
+   CERRAR SESIÓN
+========================================== */
+
+document
+  .getElementById("logoutButton")
+  .addEventListener("click", function() {
+
+    document.getElementById("adminPanel").style.display = "none";
+
+    document.getElementById("loginScreen").style.display = "flex";
+
+  });
+
+</script>
+
+</body>
+</html>
