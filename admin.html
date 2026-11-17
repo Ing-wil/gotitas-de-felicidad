@@ -12,23 +12,23 @@
 
 *{
     box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
 body{
-    margin:0;
     font-family:Arial,Helvetica,sans-serif;
-    background:#f4f4f4;
+    background:#f5f5f5;
     color:#222;
 }
 
-button,
-input,
-select,
-textarea{
-    font-family:inherit;
+.hidden{
+    display:none !important;
 }
 
-/* LOGIN */
+button{
+    cursor:pointer;
+}
 
 .login-container{
     min-height:100vh;
@@ -36,172 +36,173 @@ textarea{
     justify-content:center;
     align-items:center;
     padding:20px;
-    background:linear-gradient(135deg,#111,#2b2b2b);
+    background:linear-gradient(135deg,#111,#7b0000);
 }
 
 .login-box{
     width:100%;
-    max-width:430px;
+    max-width:420px;
     background:#fff;
-    border-radius:14px;
-    padding:38px;
-    box-shadow:0 12px 35px rgba(0,0,0,.3);
+    padding:35px;
+    border-radius:15px;
+    box-shadow:0 15px 40px rgba(0,0,0,.3);
 }
 
 .login-box h1{
-    margin:0 0 10px;
-    font-size:28px;
+    text-align:center;
+    margin-bottom:10px;
 }
 
 .login-box p{
+    text-align:center;
     color:#666;
-    line-height:1.5;
+    margin-bottom:25px;
 }
 
-.input-group{
-    margin:18px 0;
+.form-group{
+    margin-bottom:18px;
 }
 
-.input-group label{
+.form-group label{
     display:block;
-    font-weight:bold;
     margin-bottom:7px;
+    font-weight:bold;
 }
 
-.input-group input{
+.form-group input,
+.form-group textarea,
+.form-group select{
     width:100%;
-    padding:13px;
+    padding:12px;
     border:1px solid #ccc;
-    border-radius:7px;
+    border-radius:8px;
     font-size:15px;
 }
 
-.login-button,
-.save-button{
-    background:#c40000;
-    color:#fff;
+.form-group textarea{
+    min-height:120px;
+    resize:vertical;
+}
+
+.btn{
     border:0;
-    border-radius:7px;
-    padding:13px 20px;
+    border-radius:8px;
+    padding:12px 18px;
     font-size:15px;
     font-weight:bold;
-    cursor:pointer;
 }
 
-.login-button{
-    width:100%;
-    margin-top:5px;
+.btn-primary{
+    background:#b40000;
+    color:white;
 }
 
-.login-button:hover,
-.save-button:hover{
-    background:#9e0000;
+.btn-primary:hover{
+    background:#8f0000;
 }
 
-.login-button:disabled,
-.save-button:disabled{
-    background:#999;
-    cursor:not-allowed;
+.btn-secondary{
+    background:#333;
+    color:white;
+}
+
+.btn-danger{
+    background:#c00000;
+    color:white;
+}
+
+.btn-success{
+    background:#168a3a;
+    color:white;
 }
 
 .login-message{
     margin-top:15px;
-    min-height:20px;
-    font-size:14px;
-    color:#c40000;
-}
-
-/* PANEL */
-
-.admin-panel{
+    padding:10px;
+    border-radius:8px;
     display:none;
+}
+
+.login-message.error{
+    display:block;
+    background:#ffe1e1;
+    color:#900;
+}
+
+.admin-layout{
     min-height:100vh;
-}
-
-.topbar{
-    height:118px;
-    background:#111;
-    color:#fff;
     display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:0 40px;
-}
-
-.topbar-left{
-    display:flex;
-    align-items:center;
-    gap:20px;
-}
-
-.topbar-logo{
-    width:82px;
-    height:82px;
-    object-fit:contain;
-    background:#fff;
-    border-radius:50%;
-    padding:3px;
-}
-
-.topbar h2{
-    margin:0;
-    font-size:28px;
-}
-
-.logout-button{
-    background:#c40000;
-    color:#fff;
-    border:0;
-    border-radius:10px;
-    padding:16px 25px;
-    font-size:16px;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-.layout{
-    display:flex;
-    min-height:calc(100vh - 118px);
 }
 
 .sidebar{
-    width:320px;
-    background:#171717;
+    width:260px;
+    background:#111;
+    color:white;
+    min-height:100vh;
+    padding:25px 15px;
+    position:fixed;
+    left:0;
+    top:0;
+    bottom:0;
+}
+
+.sidebar h2{
+    text-align:center;
+    margin-bottom:30px;
     color:#fff;
-    padding:35px 20px;
 }
 
-.sidebar h3{
-    margin:0 0 20px 18px;
-    color:#aaa;
-    font-size:18px;
+.sidebar-menu{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
 }
 
-.menu-button{
+.sidebar-menu button{
     width:100%;
     background:transparent;
-    color:#fff;
     border:0;
+    color:white;
     text-align:left;
-    padding:18px 20px;
-    border-radius:10px;
-    font-size:17px;
-    cursor:pointer;
-    margin-bottom:5px;
+    padding:14px;
+    border-radius:7px;
+    font-size:15px;
 }
 
-.menu-button:hover{
-    background:#292929;
+.sidebar-menu button:hover,
+.sidebar-menu button.active{
+    background:#b40000;
 }
 
-.menu-button.active{
-    background:#d00000;
+.logout-btn{
+    margin-top:30px;
+    width:100%;
+    padding:12px;
+    border:0;
+    border-radius:7px;
+    background:#333;
+    color:white;
 }
 
-.content{
-    flex:1;
-    padding:45px;
-    overflow:auto;
+.main-content{
+    margin-left:260px;
+    width:calc(100% - 260px);
+    padding:30px;
+}
+
+.topbar{
+    background:#fff;
+    padding:20px 25px;
+    border-radius:12px;
+    margin-bottom:25px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 3px 12px rgba(0,0,0,.08);
+}
+
+.topbar h1{
+    font-size:25px;
 }
 
 .section{
@@ -212,290 +213,181 @@ textarea{
     display:block;
 }
 
-.page-title h1{
-    margin:0 0 8px;
-    font-size:42px;
+.card{
+    background:#fff;
+    border-radius:12px;
+    padding:25px;
+    margin-bottom:25px;
+    box-shadow:0 3px 12px rgba(0,0,0,.08);
 }
 
-.page-title p{
-    margin:0 0 35px;
-    color:#666;
-    font-size:18px;
+.card h2{
+    margin-bottom:20px;
 }
 
-/* TARJETAS */
-
-.cards{
+.dashboard-grid{
     display:grid;
     grid-template-columns:repeat(3,1fr);
-    gap:30px;
-    margin-bottom:45px;
+    gap:20px;
 }
 
-.card,
-.form-card{
+.dashboard-card{
     background:#fff;
-    border-radius:16px;
-    padding:32px;
-    box-shadow:0 8px 25px rgba(0,0,0,.08);
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 3px 12px rgba(0,0,0,.08);
 }
 
-.card h3{
-    margin:0 0 15px;
-    color:#555;
-    font-size:21px;
+.dashboard-card h3{
+    color:#666;
+    margin-bottom:10px;
 }
 
-.number{
-    font-size:42px;
+.dashboard-card .number{
+    font-size:35px;
     font-weight:bold;
-    color:#c40000;
+    color:#b40000;
 }
 
-.form-card{
-    margin-bottom:28px;
-}
-
-.form-card h2{
-    margin-top:0;
-    font-size:25px;
-}
-
-.form-card p{
-    color:#555;
-}
-
-/* FORMULARIOS */
-
-.form-grid{
+.form-row{
     display:grid;
     grid-template-columns:1fr 1fr;
     gap:20px;
 }
 
-.form-group{
-    margin-bottom:20px;
+.form-actions{
+    margin-top:20px;
+    display:flex;
+    gap:10px;
 }
-
-.form-group label{
-    display:block;
-    font-weight:bold;
-    margin-bottom:7px;
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea{
-    width:100%;
-    padding:13px;
-    border:1px solid #ccc;
-    border-radius:7px;
-    font-size:15px;
-}
-
-.form-group textarea{
-    min-height:120px;
-    resize:vertical;
-}
-
-.full{
-    grid-column:1/-1;
-}
-
-.save-button{
-    margin-top:5px;
-}
-
-.secondary-button{
-    background:#333;
-    color:#fff;
-    border:0;
-    padding:12px 20px;
-    border-radius:7px;
-    cursor:pointer;
-    font-weight:bold;
-    font-size:14px;
-}
-
-/* MENSAJES */
 
 .alert{
-    display:none;
-    padding:14px 16px;
+    padding:12px 15px;
     border-radius:8px;
-    margin-bottom:20px;
+    margin-top:15px;
 }
 
 .alert.success{
-    display:block;
-    background:#e8f7ee;
-    color:#126b35;
-    border:1px solid #b8e2c8;
+    background:#dff5e5;
+    color:#166b2e;
 }
 
 .alert.error{
-    display:block;
-    background:#fff0f0;
-    color:#a40000;
-    border:1px solid #efb8b8;
+    background:#ffe0e0;
+    color:#8a0000;
 }
-
-/* PRODUCTOS */
 
 .product-list{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
+    grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
     gap:20px;
 }
 
 .product-card{
     background:#fff;
-    border-radius:14px;
-    overflow:hidden;
-    box-shadow:0 6px 20px rgba(0,0,0,.08);
-}
-
-.product-image{
-    height:220px;
-    background:#eee;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    color:#888;
+    border:1px solid #ddd;
+    border-radius:10px;
     overflow:hidden;
 }
 
-.product-image img{
+.product-card img{
     width:100%;
-    height:100%;
+    height:180px;
     object-fit:cover;
+    display:block;
 }
 
 .product-info{
-    padding:20px;
+    padding:15px;
 }
 
 .product-info h3{
-    margin:0 0 8px;
+    margin-bottom:8px;
 }
 
-.product-price{
-    font-weight:bold;
-    color:#c40000;
-    font-size:19px;
-    margin:8px 0;
-}
-
-.product-description{
-    color:#666;
-    line-height:1.5;
+.product-info p{
+    margin-bottom:8px;
+    color:#555;
 }
 
 .product-actions{
     display:flex;
-    gap:10px;
-    margin-top:15px;
+    gap:8px;
+    margin-top:12px;
 }
 
-.delete-button{
-    background:#c40000;
-    color:#fff;
-    border:0;
-    border-radius:6px;
-    padding:9px 13px;
-    cursor:pointer;
+.product-actions button{
+    flex:1;
 }
 
-/* GALERIA */
-
-.upload-area{
-    border:2px dashed #bbb;
-    border-radius:10px;
-    padding:30px;
-    text-align:center;
-    margin-bottom:15px;
-}
-
-.upload-area input{
+.preview-image{
+    max-width:250px;
+    max-height:200px;
     margin-top:10px;
+    border-radius:8px;
+    display:none;
 }
 
-.small-note{
+.file-help{
     font-size:13px;
-    color:#777;
-    margin-top:8px;
+    color:#666;
+    margin-top:5px;
 }
 
-/* RESPONSIVE */
-
-@media(max-width:1000px){
-
-    .cards{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .product-list{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .sidebar{
-        width:240px;
-    }
-
-    .content{
-        padding:30px;
-    }
+.empty-message{
+    background:#fafafa;
+    border:1px dashed #ccc;
+    padding:25px;
+    text-align:center;
+    color:#666;
+    border-radius:8px;
 }
 
-@media(max-width:750px){
-
-    .topbar{
-        height:auto;
-        padding:20px;
-        gap:15px;
-        align-items:center;
-    }
-
-    .topbar h2{
-        font-size:20px;
-    }
-
-    .topbar-logo{
-        width:58px;
-        height:58px;
-    }
-
-    .logout-button{
-        padding:11px 15px;
-        font-size:13px;
-    }
-
-    .layout{
-        flex-direction:column;
-    }
+@media(max-width:900px){
 
     .sidebar{
-        width:100%;
-        padding:20px;
+        width:220px;
     }
 
-    .content{
-        padding:20px;
+    .main-content{
+        margin-left:220px;
+        width:calc(100% - 220px);
     }
 
-    .cards,
-    .product-list,
-    .form-grid{
+    .dashboard-grid{
         grid-template-columns:1fr;
     }
 
-    .page-title h1{
-        font-size:32px;
+    .form-row{
+        grid-template-columns:1fr;
     }
 
-    .full{
-        grid-column:auto;
+}
+
+@media(max-width:700px){
+
+    .admin-layout{
+        display:block;
     }
+
+    .sidebar{
+        position:relative;
+        width:100%;
+        min-height:auto;
+    }
+
+    .main-content{
+        margin-left:0;
+        width:100%;
+        padding:15px;
+    }
+
+    .topbar{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:10px;
+    }
+
 }
 
 </style>
@@ -503,196 +395,186 @@ textarea{
 
 <body>
 
-<!-- =========================
+
+<!-- ==========================================
      LOGIN
-========================= -->
+========================================== -->
 
 <div id="loginScreen" class="login-container">
 
     <div class="login-box">
 
-        <h1>Panel de administrador</h1>
+        <h1>Goticas de Felicidad</h1>
 
-        <p>
-            Accede para administrar Goticas de Felicidad.
-        </p>
+        <p>Panel de administración</p>
 
         <form id="loginForm">
 
-            <div class="input-group">
+            <div class="form-group">
 
-                <label for="email">
+                <label for="loginEmail">
                     Correo electrónico
                 </label>
 
                 <input
                     type="email"
-                    id="email"
-                    placeholder="Ingresa tu correo"
+                    id="loginEmail"
                     required
                 >
 
             </div>
 
-            <div class="input-group">
 
-                <label for="password">
+            <div class="form-group">
+
+                <label for="loginPassword">
                     Contraseña
                 </label>
 
                 <input
                     type="password"
-                    id="password"
-                    placeholder="Ingresa tu contraseña"
+                    id="loginPassword"
                     required
                 >
 
             </div>
 
+
             <button
                 type="submit"
-                class="login-button"
-                id="loginButton"
+                class="btn btn-primary"
+                style="width:100%;"
             >
-                Iniciar sesión
+                Ingresar
             </button>
 
-            <div
-                id="loginMessage"
-                class="login-message"
-            ></div>
-
         </form>
+
+
+        <div id="loginMessage" class="login-message"></div>
 
     </div>
 
 </div>
 
 
-<!-- =========================
-     PANEL ADMINISTRATIVO
-========================= -->
 
-<div id="adminPanel" class="admin-panel">
+<!-- ==========================================
+     ADMINISTRADOR
+========================================== -->
 
-<header class="topbar">
-
-    <div class="topbar-left">
-
-        <img
-            src="logo-png.2.png"
-            class="topbar-logo"
-            alt="Goticas de Felicidad"
-        >
-
-        <h2>
-            Administración de Goticas de Felicidad
-        </h2>
-
-    </div>
-
-    <button
-        id="logoutButton"
-        class="logout-button"
-    >
-        Cerrar sesión
-    </button>
-
-</header>
+<div
+    id="adminPanel"
+    class="admin-layout hidden"
+>
 
 
-<div class="layout">
-
-<!-- =========================
-     MENU
-========================= -->
+<!-- ==========================================
+     SIDEBAR
+========================================== -->
 
 <aside class="sidebar">
 
-    <h3>
-        ADMINISTRACIÓN
-    </h3>
+    <h2>
+        Goticas de Felicidad
+    </h2>
+
+
+    <div class="sidebar-menu">
+
+        <button
+            data-section="dashboard"
+            class="active"
+        >
+            Inicio
+        </button>
+
+
+        <button
+            data-section="productos"
+        >
+            Productos
+        </button>
+
+
+        <button
+            data-section="galeria"
+        >
+            Galería
+        </button>
+
+
+        <button
+            data-section="textos"
+        >
+            Textos de la página
+        </button>
+
+
+        <button
+            data-section="contacto"
+        >
+            Contacto
+        </button>
+
+
+        <button
+            data-section="google"
+        >
+            Reseñas de Google
+        </button>
+
+    </div>
+
 
     <button
-        class="menu-button active"
-        onclick="showSection('inicio',this)"
+        id="logoutButton"
+        class="logout-btn"
     >
-        Inicio
-    </button>
-
-    <button
-        class="menu-button"
-        onclick="showSection('productos',this)"
-    >
-        Productos
-    </button>
-
-    <button
-        class="menu-button"
-        onclick="showSection('galeria',this)"
-    >
-        Galería
-    </button>
-
-    <button
-        class="menu-button"
-        onclick="showSection('textos',this)"
-    >
-        Textos de la página
-    </button>
-
-    <button
-        class="menu-button"
-        onclick="showSection('contacto',this)"
-    >
-        Contacto
-    </button>
-
-    <button
-        class="menu-button"
-        onclick="showSection('google',this)"
-    >
-        Reseñas de Google
+        Cerrar sesión
     </button>
 
 </aside>
 
 
-<!-- =========================
+
+<!-- ==========================================
      CONTENIDO
-========================= -->
+========================================== -->
 
-<main class="content">
-
-
-<!-- INICIO -->
-
-<section id="inicio" class="section active">
-
-    <div class="page-title">
-
-        <h1>
-            Panel principal
-        </h1>
-
-        <p>
-            Administración de Goticas de Felicidad.
-        </p>
-
-    </div>
+<main class="main-content">
 
 
-    <div class="cards">
+<div class="topbar">
 
-        <div class="card">
+    <h1 id="pageTitle">
+        Inicio
+    </h1>
 
-            <h3>
-                Productos
-            </h3>
+    <span id="userEmail"></span>
+
+</div>
+
+
+
+<!-- ==========================================
+     INICIO
+========================================== -->
+
+<section
+    id="dashboard"
+    class="section active"
+>
+
+    <div class="dashboard-grid">
+
+        <div class="dashboard-card">
+
+            <h3>Productos</h3>
 
             <div
-                class="number"
                 id="productCount"
+                class="number"
             >
                 0
             </div>
@@ -700,15 +582,13 @@ textarea{
         </div>
 
 
-        <div class="card">
+        <div class="dashboard-card">
 
-            <h3>
-                Fotografías
-            </h3>
+            <h3>Galería</h3>
 
             <div
+                id="galleryCount"
                 class="number"
-                id="photoCount"
             >
                 0
             </div>
@@ -716,17 +596,15 @@ textarea{
         </div>
 
 
-        <div class="card">
+        <div class="dashboard-card">
 
-            <h3>
-                Videos
-            </h3>
+            <h3>Estado</h3>
 
             <div
                 class="number"
-                id="videoCount"
+                style="font-size:22px;"
             >
-                0
+                Activo
             </div>
 
         </div>
@@ -734,18 +612,14 @@ textarea{
     </div>
 
 
-    <div class="form-card">
+    <div class="card">
 
         <h2>
-            Bienvenido
+            Panel de administración
         </h2>
 
-        <p style="line-height:1.7">
-            Ya estás dentro del panel administrativo.
-        </p>
-
-        <p style="line-height:1.7">
-            Desde aquí podrás administrar el contenido de Goticas de Felicidad.
+        <p>
+            Desde este panel podrás administrar la información que aparece en la página pública de Goticas de Felicidad.
         </p>
 
     </div>
@@ -753,32 +627,17 @@ textarea{
 </section>
 
 
-<!-- =========================
+
+<!-- ==========================================
      PRODUCTOS
-========================= -->
+========================================== -->
 
-<section id="productos" class="section">
+<section
+    id="productos"
+    class="section"
+>
 
-    <div class="page-title">
-
-        <h1>
-            Productos
-        </h1>
-
-        <p>
-            Agrega y administra los productos de Goticas de Felicidad.
-        </p>
-
-    </div>
-
-
-    <div
-        id="productAlert"
-        class="alert"
-    ></div>
-
-
-    <div class="form-card">
+    <div class="card">
 
         <h2>
             Agregar producto
@@ -787,8 +646,7 @@ textarea{
 
         <form id="productForm">
 
-            <div class="form-grid">
-
+            <div class="form-row">
 
                 <div class="form-group">
 
@@ -799,7 +657,6 @@ textarea{
                     <input
                         type="text"
                         id="productName"
-                        placeholder="Ejemplo: Desayuno sorpresa"
                         required
                     >
 
@@ -818,7 +675,7 @@ textarea{
                     >
 
                         <option value="">
-                            Seleccionar categoría
+                            Selecciona una categoría
                         </option>
 
                         <option value="Desayunos sorpresa">
@@ -837,6 +694,10 @@ textarea{
 
                 </div>
 
+            </div>
+
+
+            <div class="form-row">
 
                 <div class="form-group">
 
@@ -848,8 +709,6 @@ textarea{
                         type="number"
                         id="productPrice"
                         min="0"
-                        placeholder="Ejemplo: 120000"
-                        required
                     >
 
                 </div>
@@ -858,54 +717,64 @@ textarea{
                 <div class="form-group">
 
                     <label for="productImage">
-                        Fotografía del producto
+                        Imagen
                     </label>
 
                     <input
                         type="file"
                         id="productImage"
                         accept="image/*"
-                        required
                     >
 
-                    <div class="small-note">
-                        Selecciona la imagen directamente desde tu computador.
+                    <div class="file-help">
+                        Selecciona directamente una imagen de tu computador.
                     </div>
-
-                </div>
-
-
-                <div class="form-group full">
-
-                    <label for="productDescription">
-                        Descripción
-                    </label>
-
-                    <textarea
-                        id="productDescription"
-                        placeholder="Descripción del producto"
-                        required
-                    ></textarea>
 
                 </div>
 
             </div>
 
 
-            <button
-                type="submit"
-                class="save-button"
-                id="saveProductButton"
-            >
-                Guardar producto
-            </button>
+            <div class="form-group">
+
+                <label for="productDescription">
+                    Descripción
+                </label>
+
+                <textarea
+                    id="productDescription"
+                    required
+                ></textarea>
+
+            </div>
+
+
+            <div class="form-actions">
+
+                <button
+                    type="submit"
+                    class="btn btn-primary"
+                    id="productSaveButton"
+                >
+                    Guardar producto
+                </button>
+
+            </div>
 
         </form>
+
+
+        <div
+            id="productMessage"
+            class="alert"
+            style="display:none;"
+        ></div>
 
     </div>
 
 
-    <div class="form-card">
+
+    <div class="card">
 
         <h2>
             Productos registrados
@@ -921,88 +790,95 @@ textarea{
 </section>
 
 
-<!-- =========================
+
+<!-- ==========================================
      GALERIA
-========================= -->
+========================================== -->
 
-<section id="galeria" class="section">
+<section
+    id="galeria"
+    class="section"
+>
 
-    <div class="page-title">
-
-        <h1>
-            Galería
-        </h1>
-
-        <p>
-            Administra las fotografías y videos de la página.
-        </p>
-
-    </div>
-
-
-    <div class="form-card">
+    <div class="card">
 
         <h2>
             Fotografías
         </h2>
 
-        <div class="upload-area">
+        <form id="galleryPhotoForm">
 
-            <p>
-                Selecciona una o varias fotografías desde tu computador.
-            </p>
+            <div class="form-group">
 
-            <input
-                type="file"
-                id="galleryImages"
-                accept="image/*"
-                multiple
-            >
+                <label for="galleryImages">
+                    Seleccionar fotografías
+                </label>
 
-            <br><br>
+                <input
+                    type="file"
+                    id="galleryImages"
+                    accept="image/*"
+                    multiple
+                >
+
+            </div>
+
 
             <button
-                type="button"
-                class="save-button"
-                onclick="uploadGalleryImages()"
+                type="submit"
+                class="btn btn-primary"
             >
                 Subir fotografías
             </button>
 
-        </div>
+        </form>
 
     </div>
 
 
-    <div class="form-card">
+    <div class="card">
 
         <h2>
             Videos
         </h2>
 
-        <div class="upload-area">
+        <form id="galleryVideoForm">
 
-            <p>
-                Selecciona uno o varios videos desde tu computador.
-            </p>
+            <div class="form-group">
 
-            <input
-                type="file"
-                id="galleryVideos"
-                accept="video/*"
-                multiple
-            >
+                <label for="galleryVideos">
+                    Seleccionar videos
+                </label>
 
-            <br><br>
+                <input
+                    type="file"
+                    id="galleryVideos"
+                    accept="video/*"
+                    multiple
+                >
+
+            </div>
+
 
             <button
-                type="button"
-                class="save-button"
-                onclick="uploadGalleryVideos()"
+                type="submit"
+                class="btn btn-primary"
             >
                 Subir videos
             </button>
 
+        </form>
+
+    </div>
+
+
+    <div class="card">
+
+        <div
+            id="galleryMessage"
+            class="empty-message"
+        >
+            La gestión completa de la galería se configurará en la siguiente etapa.
         </div>
 
     </div>
@@ -1010,26 +886,22 @@ textarea{
 </section>
 
 
-<!-- =========================
+
+<!-- ==========================================
      TEXTOS
-========================= -->
+========================================== -->
 
-<section id="textos" class="section">
+<section
+    id="textos"
+    class="section"
+>
 
-    <div class="page-title">
+    <div class="card">
 
-        <h1>
+        <h2>
             Textos de la página
-        </h1>
+        </h2>
 
-        <p>
-            Aquí podrás modificar los textos principales del sitio.
-        </p>
-
-    </div>
-
-
-    <div class="form-card">
 
         <form id="textsForm">
 
@@ -1042,7 +914,6 @@ textarea{
                 <input
                     type="text"
                     id="heroTitle"
-                    value="Creamos momentos que hacen sonreír"
                 >
 
             </div>
@@ -1054,7 +925,9 @@ textarea{
                     Descripción principal
                 </label>
 
-                <textarea id="heroDescription">Sorprende a quienes más quieres con detalles preparados con amor.</textarea>
+                <textarea
+                    id="heroDescription"
+                ></textarea>
 
             </div>
 
@@ -1065,17 +938,23 @@ textarea{
                     Texto de Nosotros
                 </label>
 
-                <textarea id="aboutText">En Goticas de Felicidad creamos detalles para celebrar momentos especiales.</textarea>
+                <textarea
+                    id="aboutText"
+                ></textarea>
 
             </div>
 
 
-            <button
-                type="submit"
-                class="save-button"
-            >
-                Guardar textos
-            </button>
+            <div class="form-actions">
+
+                <button
+                    type="submit"
+                    class="btn btn-primary save-button"
+                >
+                    Guardar textos
+                </button>
+
+            </div>
 
         </form>
 
@@ -1084,26 +963,22 @@ textarea{
 </section>
 
 
-<!-- =========================
+
+<!-- ==========================================
      CONTACTO
-========================= -->
+========================================== -->
 
-<section id="contacto" class="section">
+<section
+    id="contacto"
+    class="section"
+>
 
-    <div class="page-title">
+    <div class="card">
 
-        <h1>
-            Contacto
-        </h1>
+        <h2>
+            Datos de contacto
+        </h2>
 
-        <p>
-            Administra los datos de contacto que aparecen en la página.
-        </p>
-
-    </div>
-
-
-    <div class="form-card">
 
         <form id="contactForm">
 
@@ -1114,9 +989,9 @@ textarea{
                 </label>
 
                 <input
-                    id="whatsapp"
                     type="text"
-                    value="3142955025"
+                    id="whatsapp"
+                    placeholder="Ejemplo: 3142955025"
                 >
 
             </div>
@@ -1129,20 +1004,24 @@ textarea{
                 </label>
 
                 <input
-                    id="tiktok"
                     type="text"
-                    value="@johannarojas1989"
+                    id="tiktok"
+                    placeholder="@usuario o enlace completo"
                 >
 
             </div>
 
 
-            <button
-                class="save-button"
-                type="submit"
-            >
-                Guardar contacto
-            </button>
+            <div class="form-actions">
+
+                <button
+                    type="submit"
+                    class="btn btn-primary save-button"
+                >
+                    Guardar contacto
+                </button>
+
+            </div>
 
         </form>
 
@@ -1151,49 +1030,41 @@ textarea{
 </section>
 
 
-<!-- =========================
+
+<!-- ==========================================
      GOOGLE
-========================= -->
+========================================== -->
 
-<section id="google" class="section">
+<section
+    id="google"
+    class="section"
+>
 
-    <div class="page-title">
-
-        <h1>
-            Reseñas de Google
-        </h1>
-
-        <p>
-            Configura el enlace directo para que los clientes puedan dejar una reseña.
-        </p>
-
-    </div>
-
-
-    <div class="form-card">
+    <div class="card">
 
         <h2>
-            Enlace de reseñas
+            Reseñas de Google
         </h2>
+
 
         <div class="form-group">
 
             <label for="googleReviewUrl">
-                Enlace de Google
+                Enlace para dejar una reseña
             </label>
 
             <input
                 type="url"
                 id="googleReviewUrl"
-                placeholder="Pega aquí el enlace de Google"
+                placeholder="https://..."
             >
 
         </div>
 
 
         <button
-            class="save-button"
             type="button"
+            class="btn btn-primary"
             onclick="saveGoogleReviewUrl()"
         >
             Guardar enlace
@@ -1203,7 +1074,7 @@ textarea{
         <div
             id="googleMessage"
             class="alert"
-            style="margin-top:20px"
+            style="display:none;"
         ></div>
 
     </div>
@@ -1215,77 +1086,100 @@ textarea{
 
 </div>
 
-</div>
 
 
 <script>
 
 /* ==========================================
-   CONEXIÓN SUPABASE
+   SUPABASE
 ========================================== */
 
 const SUPABASE_URL =
-"https://nkqlvtaahdohlvwstbkw.supabase.co";
+    "https://nkqlvtaahdohlvwstbkw.supabase.co";
 
-const SUPABASE_PUBLISHABLE_KEY =
-"sb_publishable_6l7hmgao4yyXlwvBz4Y_Cg_-ywlhGrg";
+
+const SUPABASE_ANON_KEY =
+    "sb_publishable_6l7hmgao4yyXlwvBz4Y_Cg_-ywlhGrg";
 
 
 const supabaseClient =
-window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_PUBLISHABLE_KEY
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_ANON_KEY
+    );
+
+
+
+/* ==========================================
+   LOGIN
+========================================== */
+
+document
+.getElementById("loginForm")
+.addEventListener(
+    "submit",
+    async function(event){
+
+        event.preventDefault();
+
+
+        const email =
+            document
+            .getElementById("loginEmail")
+            .value
+            .trim();
+
+
+        const password =
+            document
+            .getElementById("loginPassword")
+            .value;
+
+
+        const message =
+            document
+            .getElementById("loginMessage");
+
+
+        message.style.display = "none";
+
+
+        const {
+            error
+        } =
+        await supabaseClient.auth.signInWithPassword({
+
+            email: email,
+            password: password
+
+        });
+
+
+        if(error){
+
+            message.className =
+                "login-message error";
+
+            message.textContent =
+                "No se pudo iniciar sesión: " +
+                error.message;
+
+            message.style.display = "block";
+
+            return;
+
+        }
+
+
+        await showAdminPanel();
+
+    }
 );
 
 
-/* ==========================================
-   ELEMENTOS
-========================================== */
-
-const loginScreen =
-document.getElementById("loginScreen");
-
-const adminPanel =
-document.getElementById("adminPanel");
-
-const loginForm =
-document.getElementById("loginForm");
-
-const loginMessage =
-document.getElementById("loginMessage");
-
-const loginButton =
-document.getElementById("loginButton");
-
 
 /* ==========================================
-   MOSTRAR LOGIN
-========================================== */
-
-function showLogin(){
-
-    loginScreen.style.display = "flex";
-
-    adminPanel.style.display = "none";
-}
-
-
-/* ==========================================
-   MOSTRAR PANEL
-========================================== */
-
-function showAdminPanel(){
-
-    loginScreen.style.display = "none";
-
-    adminPanel.style.display = "block";
-
-    loadProducts();
-}
-
-
-/* ==========================================
-   COMPROBAR SESION
+   SESION
 ========================================== */
 
 async function checkSession(){
@@ -1300,87 +1194,68 @@ async function checkSession(){
 
     if(session){
 
-        showAdminPanel();
+        await showAdminPanel();
 
-    }else{
+    }
+    else{
 
-        showLogin();
+        document
+        .getElementById("loginScreen")
+        .classList
+        .remove("hidden");
+
+
+        document
+        .getElementById("adminPanel")
+        .classList
+        .add("hidden");
 
     }
 
 }
 
 
+
 /* ==========================================
-   LOGIN
+   MOSTRAR PANEL
 ========================================== */
 
-loginForm.addEventListener(
-"submit",
-async function(event){
+async function showAdminPanel(){
 
-    event.preventDefault();
-
-
-    const email =
-    document.getElementById("email")
-    .value
-    .trim();
+    document
+    .getElementById("loginScreen")
+    .classList
+    .add("hidden");
 
 
-    const password =
-    document.getElementById("password")
-    .value;
-
-
-    loginMessage.textContent = "";
-
-    loginButton.disabled = true;
-
-    loginButton.textContent =
-    "Verificando...";
+    document
+    .getElementById("adminPanel")
+    .classList
+    .remove("hidden");
 
 
     const {
-        error
+        data: {
+            user
+        }
     } =
-    await supabaseClient.auth.signInWithPassword({
-
-        email: email,
-
-        password: password
-
-    });
+    await supabaseClient.auth.getUser();
 
 
-    if(error){
+    if(user){
 
-        loginMessage.textContent =
-        "Correo o contraseña incorrectos.";
-
-        console.error(error);
-
-        loginButton.disabled = false;
-
-        loginButton.textContent =
-        "Iniciar sesión";
-
-        return;
+        document
+        .getElementById("userEmail")
+        .textContent =
+            user.email || "";
 
     }
 
 
-    loginMessage.textContent = "";
+    await loadProducts();
 
-    loginButton.disabled = false;
+}
 
-    loginButton.textContent =
-    "Iniciar sesión";
-
-
-    showAdminPanel();
-
-});
 
 
 /* ==========================================
@@ -1390,321 +1265,97 @@ async function(event){
 document
 .getElementById("logoutButton")
 .addEventListener(
-"click",
-async function(){
+    "click",
+    async function(){
 
-    await supabaseClient.auth.signOut();
+        await supabaseClient.auth.signOut();
 
-    document.getElementById("email").value = "";
+        location.reload();
 
-    document.getElementById("password").value = "";
+    }
+);
 
-    showLogin();
-
-});
 
 
 /* ==========================================
-   CAMBIAR SECCION
-========================================== */
-
-function showSection(
-    sectionId,
-    button
-){
-
-    document
-    .querySelectorAll(".section")
-    .forEach(section => {
-
-        section.classList.remove("active");
-
-    });
-
-
-    const selected =
-    document.getElementById(sectionId);
-
-
-    if(selected){
-
-        selected.classList.add("active");
-
-    }
-
-
-    document
-    .querySelectorAll(".menu-button")
-    .forEach(btn => {
-
-        btn.classList.remove("active");
-
-    });
-
-
-    if(button){
-
-        button.classList.add("active");
-
-    }
-
-
-    if(sectionId === "productos"){
-
-        loadProducts();
-
-    }
-
-}
-
-
-/* ==========================================
-   ALERTAS
-========================================== */
-
-function showAlert(
-    message,
-    type = "success"
-){
-
-    const box =
-    document.getElementById("productAlert");
-
-
-    box.className =
-    "alert " + type;
-
-
-    box.textContent =
-    message;
-
-}
-
-
-/* ==========================================
-   SUBIR IMAGEN DE PRODUCTO
-========================================== */
-
-async function uploadProductImage(file){
-
-    const extension =
-    file.name
-    .split(".")
-    .pop()
-    .toLowerCase();
-
-
-    const safeName =
-    file.name
-    .replace(/\.[^/.]+$/, "")
-    .replace(/[^a-zA-Z0-9-_]/g, "-")
-    .toLowerCase();
-
-
-    const path =
-    `${Date.now()}-${safeName}.${extension}`;
-
-
-    const {
-        error: uploadError
-    } =
-    await supabaseClient
-    .storage
-    .from("productos")
-    .upload(
-        path,
-        file,
-        {
-            cacheControl: "3600",
-            upsert: false
-        }
-    );
-
-
-    if(uploadError){
-
-        throw uploadError;
-
-    }
-
-
-    const {
-        data
-    } =
-    supabaseClient
-    .storage
-    .from("productos")
-    .getPublicUrl(path);
-
-
-    return {
-
-        url: data.publicUrl,
-
-        path: path
-
-    };
-
-}
-
-
-/* ==========================================
-   GUARDAR PRODUCTO
+   NAVEGACION
 ========================================== */
 
 document
-.getElementById("productForm")
-.addEventListener(
-"submit",
-async function(event){
+.querySelectorAll(".sidebar-menu button")
+.forEach(function(button){
 
-    event.preventDefault();
+    button.addEventListener(
+        "click",
+        function(){
 
-
-    const button =
-    document.getElementById(
-        "saveProductButton"
-    );
+            const sectionId =
+                this.dataset.section;
 
 
-    button.disabled = true;
-
-    button.textContent =
-    "Guardando...";
-
-
-    try{
-
-        const name =
-        document
-        .getElementById("productName")
-        .value
-        .trim();
-
-
-        const category =
-        document
-        .getElementById("productCategory")
-        .value;
-
-
-        const price =
-        Number(
             document
-            .getElementById("productPrice")
-            .value
-        );
+            .querySelectorAll(".sidebar-menu button")
+            .forEach(function(btn){
+
+                btn.classList.remove("active");
+
+            });
 
 
-        const description =
-        document
-        .getElementById("productDescription")
-        .value
-        .trim();
+            this.classList.add("active");
 
 
-        const imageFile =
-        document
-        .getElementById("productImage")
-        .files[0];
+            document
+            .querySelectorAll(".section")
+            .forEach(function(section){
+
+                section.classList.remove("active");
+
+            });
 
 
-        if(!imageFile){
-
-            throw new Error(
-                "Selecciona una fotografía."
-            );
-
-        }
+            document
+            .getElementById(sectionId)
+            .classList.add("active");
 
 
-        showAlert(
-            "Subiendo fotografía...",
-            "success"
-        );
+            const titles = {
+
+                dashboard:
+                    "Inicio",
+
+                productos:
+                    "Productos",
+
+                galeria:
+                    "Galería",
+
+                textos:
+                    "Textos de la página",
+
+                contacto:
+                    "Contacto",
+
+                google:
+                    "Reseñas de Google"
+
+            };
 
 
-        const uploaded =
-        await uploadProductImage(
-            imageFile
-        );
-
-
-        const {
-            error
-        } =
-        await supabaseClient
-        .from("productos")
-        .insert({
-
-            nombre: name,
-
-            categoria: category,
-
-            precio: price,
-
-            descripcion: description,
-
-            imagen_url: uploaded.url,
-
-            activo: true
-
-        });
-
-
-        if(error){
-
-            await supabaseClient
-            .storage
-            .from("productos")
-            .remove([
-                uploaded.path
-            ]);
-
-
-            throw error;
+            document
+            .getElementById("pageTitle")
+            .textContent =
+                titles[sectionId] || "Administrador";
 
         }
-
-
-        document
-        .getElementById("productForm")
-        .reset();
-
-
-        showAlert(
-            "Producto guardado correctamente.",
-            "success"
-        );
-
-
-        await loadProducts();
-
-    }
-    catch(error){
-
-        console.error(error);
-
-
-        showAlert(
-            "No se pudo guardar el producto: " +
-            error.message,
-            "error"
-        );
-
-    }
-
-
-    button.disabled = false;
-
-    button.textContent =
-    "Guardar producto";
+    );
 
 });
 
 
+
 /* ==========================================
-   CARGAR PRODUCTOS
+   PRODUCTOS
 ========================================== */
 
 async function loadProducts(){
@@ -1714,68 +1365,45 @@ async function loadProducts(){
         error
     } =
     await supabaseClient
-    .from("productos")
-    .select("*")
-    .order(
-        "created_at",
-        {
+        .from("productos")
+        .select("*")
+        .order("id", {
             ascending:false
-        }
-    );
+        });
 
 
     if(error){
 
-        console.error(error);
-
-
-        document
-        .getElementById("productList")
-        .innerHTML = `
-
-        <div
-        class="alert error"
-        style="display:block">
-
-        No se pudieron cargar los productos.
-
-        Revisa las políticas RLS de la tabla productos.
-
-        </div>
-
-        `;
+        console.error(
+            "Error cargando productos:",
+            error
+        );
 
         return;
 
     }
+
+
+    const list =
+        document
+        .getElementById("productList");
+
+
+    list.innerHTML = "";
 
 
     document
     .getElementById("productCount")
     .textContent =
-    data.length;
+        data.length;
 
 
-    const list =
-    document.getElementById(
-        "productList"
-    );
-
-
-    if(data.length === 0){
+    if(!data.length){
 
         list.innerHTML = `
-
-        <div
-        class="form-card"
-        style="grid-column:1/-1">
-
-        <p>
-        No hay productos registrados todavía.
-        </p>
-
-        </div>
-
+            <div class="empty-message">
+                No hay productos registrados.
+            </div>
         `;
 
         return;
@@ -1783,122 +1411,430 @@ async function loadProducts(){
     }
 
 
-    list.innerHTML =
-    data
-    .map(product => `
+    data.forEach(function(product){
 
-        <div class="product-card">
+        const card =
+            document.createElement("div");
 
-            <div class="product-image">
+        card.className =
+            "product-card";
 
-                ${
-                    product.imagen_url
 
-                    ?
+        const image =
+            product.imagen_url
+                ? `
+                    <img
+                        src="${product.imagen_url}"
+                        alt="${escapeHtml(product.nombre || "")}"
+                    >
+                  `
+                : `
+                    <div
+                        style="
+                            height:180px;
+                            display:flex;
+                            align-items:center;
+                            justify-content:center;
+                            background:#eee;
+                            color:#777;
+                        "
+                    >
+                        Sin imagen
+                    </div>
+                  `;
 
-                    `<img
-                    src="${escapeHtml(product.imagen_url)}"
-                    alt="${escapeHtml(product.nombre)}"
-                    >`
 
-                    :
+        card.innerHTML = `
 
-                    "Sin fotografía"
-                }
-
-            </div>
-
+            ${image}
 
             <div class="product-info">
 
                 <h3>
-                    ${escapeHtml(product.nombre)}
+                    ${escapeHtml(product.nombre || "")}
                 </h3>
 
-
-                <div class="product-price">
-
-                    $${Number(
-                        product.precio || 0
-                    ).toLocaleString("es-CO")}
-
-                </div>
-
-
-                <p
-                style="font-size:13px;color:#888">
-
-                    ${escapeHtml(
-                        product.categoria || ""
-                    )}
-
+                <p>
+                    <strong>Categoría:</strong>
+                    ${escapeHtml(product.categoria || "")}
                 </p>
 
-
-                <p class="product-description">
-
-                    ${escapeHtml(
-                        product.descripcion || ""
-                    )}
-
+                <p>
+                    <strong>Precio:</strong>
+                    ${formatPrice(product.precio)}
                 </p>
 
+                <p>
+                    ${escapeHtml(product.descripcion || "")}
+                </p>
 
                 <div class="product-actions">
 
                     <button
-                    class="delete-button"
-                    type="button"
-                    onclick="deleteProduct(
-                        '${escapeJs(product.id)}',
-                        '${escapeJs(product.imagen_url || "")}'
-                    )">
-
-                    Eliminar
-
+                        class="btn btn-danger"
+                        onclick="deleteProduct(${product.id})"
+                    >
+                        Eliminar
                     </button>
 
                 </div>
 
             </div>
 
-        </div>
+        `;
 
-    `)
-    .join("");
+
+        list.appendChild(card);
+
+    });
 
 }
+
+
+
+/* ==========================================
+   GUARDAR PRODUCTO
+========================================== */
+
+document
+.getElementById("productForm")
+.addEventListener(
+    "submit",
+    async function(event){
+
+        event.preventDefault();
+
+
+        const button =
+            document
+            .getElementById("productSaveButton");
+
+
+        const message =
+            document
+            .getElementById("productMessage");
+
+
+        button.disabled = true;
+
+        button.textContent =
+            "Guardando...";
+
+
+        message.style.display = "none";
+
+
+        try{
+
+            const name =
+                document
+                .getElementById("productName")
+                .value
+                .trim();
+
+
+            const category =
+                document
+                .getElementById("productCategory")
+                .value
+                .trim();
+
+
+            const price =
+                document
+                .getElementById("productPrice")
+                .value;
+
+
+            const description =
+                document
+                .getElementById("productDescription")
+                .value
+                .trim();
+
+
+            const imageFile =
+                document
+                .getElementById("productImage")
+                .files[0];
+
+
+            let imageUrl = "";
+
+
+            if(imageFile){
+
+                const fileExtension =
+                    imageFile.name
+                    .split(".")
+                    .pop();
+
+
+                const fileName =
+                    Date.now() +
+                    "_" +
+                    Math.random()
+                    .toString(36)
+                    .substring(2) +
+                    "." +
+                    fileExtension;
+
+
+                const filePath =
+                    "productos/" +
+                    fileName;
+
+
+                const {
+                    error: uploadError
+                } =
+                await supabaseClient
+                    .storage
+                    .from("productos")
+                    .upload(
+                        filePath,
+                        imageFile,
+                        {
+                            cacheControl:
+                                "3600",
+
+                            upsert:false
+                        }
+                    );
+
+
+                if(uploadError){
+
+                    throw uploadError;
+
+                }
+
+
+                const {
+                    data:
+                    publicUrlData
+                } =
+                supabaseClient
+                    .storage
+                    .from("productos")
+                    .getPublicUrl(filePath);
+
+
+                imageUrl =
+                    publicUrlData.publicUrl;
+
+            }
+
+
+            const {
+                error
+            } =
+            await supabaseClient
+                .from("productos")
+                .insert({
+
+                    nombre:name,
+
+                    categoria:category,
+
+                    precio:
+                        price
+                        ? Number(price)
+                        : 0,
+
+                    descripcion:description,
+
+                    imagen_url:imageUrl,
+
+                    activo:true
+
+                });
+
+
+            if(error){
+
+                throw error;
+
+            }
+
+
+            message.className =
+                "alert success";
+
+            message.textContent =
+                "Producto guardado correctamente.";
+
+            message.style.display =
+                "block";
+
+
+            this.reset();
+
+
+            await loadProducts();
+
+        }
+        catch(error){
+
+            console.error(
+                "Error guardando producto:",
+                error
+            );
+
+
+            message.className =
+                "alert error";
+
+            message.textContent =
+                "No se pudo guardar el producto: " +
+                error.message;
+
+            message.style.display =
+                "block";
+
+        }
+
+
+        button.disabled = false;
+
+        button.textContent =
+            "Guardar producto";
+
+    }
+);
+
 
 
 /* ==========================================
    ELIMINAR PRODUCTO
 ========================================== */
 
-async function deleteProduct(
-    id,
-    imageUrl
-){
+async function deleteProduct(id){
 
-    if(
-        !confirm(
-            "¿Deseas eliminar este producto?"
-        )
-    ){
+    if(!confirm(
+        "¿Deseas eliminar este producto?"
+    )){
 
         return;
 
     }
 
 
-    try{
+    const {
+        data: product,
+        error: productError
+    } =
+    await supabaseClient
+        .from("productos")
+        .select("imagen_url")
+        .eq("id", id)
+        .single();
 
-        const {
-            error
-        } =
-        await supabaseClient
+
+    if(productError){
+
+        alert(
+            "No se pudo consultar el producto: " +
+            productError.message
+        );
+
+        return;
+
+    }
+
+
+    const {
+        error
+    } =
+    await supabaseClient
         .from("productos")
         .delete()
         .eq("id", id);
+
+
+    if(error){
+
+        alert(
+            "No se pudo eliminar el producto: " +
+            error.message
+        );
+
+        return;
+
+    }
+
+
+    if(product && product.imagen_url){
+
+        try{
+
+            const url =
+                product.imagen_url;
+
+
+            const marker =
+                "/storage/v1/object/public/productos/";
+
+
+            const position =
+                url.indexOf(marker);
+
+
+            if(position !== -1){
+
+                const filePath =
+                    decodeURIComponent(
+                        url.substring(
+                            position + marker.length
+                        )
+                    );
+
+
+                await supabaseClient
+                    .storage
+                    .from("productos")
+                    .remove([filePath]);
+
+            }
+
+        }
+        catch(storageError){
+
+            console.error(
+                "Error eliminando imagen:",
+                storageError
+            );
+
+        }
+
+    }
+
+
+    await loadProducts();
+
+}
+
+
+
+/* ==========================================
+   CONFIGURACION DEL SITIO
+========================================== */
+
+async function loadConfiguracion(){
+
+    try{
+
+        const {
+            data,
+            error
+        } =
+        await supabaseClient
+            .from("configuracion")
+            .select("*")
+            .order("id", {
+                ascending:true
+            })
+            .limit(1);
 
 
         if(error){
@@ -1908,56 +1844,58 @@ async function deleteProduct(
         }
 
 
-        if(imageUrl){
+        if(!data || data.length === 0){
 
-            const marker =
-            "/storage/v1/object/public/productos/";
-
-
-            const index =
-            imageUrl.indexOf(marker);
-
-
-            if(index !== -1){
-
-                const path =
-                decodeURIComponent(
-                    imageUrl.substring(
-                        index + marker.length
-                    )
-                );
-
-
-                await supabaseClient
-                .storage
-                .from("productos")
-                .remove([
-                    path
-                ]);
-
-            }
+            return;
 
         }
 
 
-        await loadProducts();
+        const config =
+            data[0];
 
 
-        showAlert(
-            "Producto eliminado correctamente.",
-            "success"
-        );
+        document
+        .getElementById("heroTitle")
+        .value =
+            config.hero_title || "";
+
+
+        document
+        .getElementById("heroDescription")
+        .value =
+            config.hero_description || "";
+
+
+        document
+        .getElementById("aboutText")
+        .value =
+            config.about_text || "";
+
+
+        document
+        .getElementById("whatsapp")
+        .value =
+            config.whatsapp || "";
+
+
+        document
+        .getElementById("tiktok")
+        .value =
+            config.tiktok_url || "";
+
+
+        document
+        .getElementById("googleReviewUrl")
+        .value =
+            config.google_review_url || "";
 
     }
     catch(error){
 
-        console.error(error);
-
-
-        showAlert(
-            "No se pudo eliminar el producto: " +
-            error.message,
-            "error"
+        console.error(
+            "Error cargando configuración:",
+            error
         );
 
     }
@@ -1965,93 +1903,127 @@ async function deleteProduct(
 }
 
 
-/* ==========================================
-   SEGURIDAD HTML
-========================================== */
-
-function escapeHtml(value){
-
-    return String(value)
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
-
-}
-
 
 /* ==========================================
-   SEGURIDAD JAVASCRIPT
+   GUARDAR CONFIGURACION
 ========================================== */
 
-function escapeJs(value){
+async function saveConfiguracion(){
 
-    return String(value)
-    .replaceAll("\\","\\\\")
-    .replaceAll("'","\\'");
+    const config = {
 
-}
+        hero_title:
+            document
+            .getElementById("heroTitle")
+            .value
+            .trim(),
+
+        hero_description:
+            document
+            .getElementById("heroDescription")
+            .value
+            .trim(),
+
+        about_text:
+            document
+            .getElementById("aboutText")
+            .value
+            .trim(),
+
+        whatsapp:
+            document
+            .getElementById("whatsapp")
+            .value
+            .trim(),
+
+        tiktok_url:
+            document
+            .getElementById("tiktok")
+            .value
+            .trim(),
+
+        google_review_url:
+            document
+            .getElementById("googleReviewUrl")
+            .value
+            .trim()
+
+    };
 
 
-/* ==========================================
-   GALERIA DE FOTOS
-========================================== */
+    try{
 
-async function uploadGalleryImages(){
+        const {
+            data: existing,
+            error: selectError
+        } =
+        await supabaseClient
+            .from("configuracion")
+            .select("id")
+            .order("id", {
+                ascending:true
+            })
+            .limit(1);
 
-    const files =
-    document
-    .getElementById("galleryImages")
-    .files;
+
+        if(selectError){
+
+            throw selectError;
+
+        }
 
 
-    if(!files.length){
+        let result;
 
-        alert(
-            "Selecciona al menos una fotografía."
+
+        if(
+            existing &&
+            existing.length > 0
+        ){
+
+            result =
+            await supabaseClient
+                .from("configuracion")
+                .update(config)
+                .eq(
+                    "id",
+                    existing[0].id
+                );
+
+        }
+        else{
+
+            result =
+            await supabaseClient
+                .from("configuracion")
+                .insert(config);
+
+        }
+
+
+        if(result.error){
+
+            throw result.error;
+
+        }
+
+
+        return true;
+
+    }
+    catch(error){
+
+        console.error(
+            "Error guardando configuración:",
+            error
         );
 
-        return;
+        throw error;
 
     }
 
-
-    alert(
-        "La carga de la galería se configurará después de terminar la sección de productos."
-    );
-
 }
 
-
-/* ==========================================
-   GALERIA DE VIDEOS
-========================================== */
-
-async function uploadGalleryVideos(){
-
-    const files =
-    document
-    .getElementById("galleryVideos")
-    .files;
-
-
-    if(!files.length){
-
-        alert(
-            "Selecciona al menos un video."
-        );
-
-        return;
-
-    }
-
-
-    alert(
-        "La carga de videos se configurará después de terminar la sección de productos."
-    );
-
-}
 
 
 /* ==========================================
@@ -2061,17 +2033,52 @@ async function uploadGalleryVideos(){
 document
 .getElementById("textsForm")
 .addEventListener(
-"submit",
-function(event){
+    "submit",
+    async function(event){
 
-    event.preventDefault();
+        event.preventDefault();
 
 
-    alert(
-        "La sección de textos se conectará a la base de datos después de terminar la sección de productos."
-    );
+        const button =
+            this.querySelector(
+                ".save-button"
+            );
 
-});
+
+        button.disabled = true;
+
+        button.textContent =
+            "Guardando...";
+
+
+        try{
+
+            await saveConfiguracion();
+
+
+            alert(
+                "Los textos fueron guardados correctamente."
+            );
+
+        }
+        catch(error){
+
+            alert(
+                "No se pudieron guardar los textos: " +
+                error.message
+            );
+
+        }
+
+
+        button.disabled = false;
+
+        button.textContent =
+            "Guardar textos";
+
+    }
+);
+
 
 
 /* ==========================================
@@ -2081,49 +2088,88 @@ function(event){
 document
 .getElementById("contactForm")
 .addEventListener(
-"submit",
-function(event){
+    "submit",
+    async function(event){
 
-    event.preventDefault();
+        event.preventDefault();
 
 
-    alert(
-        "La sección de contacto se conectará a la base de datos después de terminar la sección de productos."
-    );
+        const button =
+            this.querySelector(
+                ".save-button"
+            );
 
-});
+
+        button.disabled = true;
+
+        button.textContent =
+            "Guardando...";
+
+
+        try{
+
+            await saveConfiguracion();
+
+
+            alert(
+                "Los datos de contacto fueron guardados correctamente."
+            );
+
+        }
+        catch(error){
+
+            alert(
+                "No se pudieron guardar los datos de contacto: " +
+                error.message
+            );
+
+        }
+
+
+        button.disabled = false;
+
+        button.textContent =
+            "Guardar contacto";
+
+    }
+);
+
 
 
 /* ==========================================
    GOOGLE
 ========================================== */
 
-function saveGoogleReviewUrl(){
+async function saveGoogleReviewUrl(){
 
     const url =
-    document
-    .getElementById(
-        "googleReviewUrl"
-    )
-    .value
-    .trim();
+        document
+        .getElementById(
+            "googleReviewUrl"
+        )
+        .value
+        .trim();
 
 
     const message =
-    document
-    .getElementById(
-        "googleMessage"
-    );
+        document
+        .getElementById(
+            "googleMessage"
+        );
 
 
     if(!url){
 
         message.className =
-        "alert error";
+            "alert error";
 
 
         message.textContent =
-        "Debes ingresar el enlace de Google.";
+            "Debes ingresar el enlace de Google.";
+
+
+        message.style.display =
+            "block";
 
 
         return;
@@ -2131,21 +2177,182 @@ function saveGoogleReviewUrl(){
     }
 
 
-    message.className =
-    "alert success";
+    try{
+
+        await saveConfiguracion();
 
 
-    message.textContent =
-    "El enlace fue recibido. Lo conectaremos con la página pública después de terminar la configuración.";
+        message.className =
+            "alert success";
+
+
+        message.textContent =
+            "El enlace de Google fue guardado correctamente.";
+
+
+        message.style.display =
+            "block";
+
+    }
+    catch(error){
+
+        message.className =
+            "alert error";
+
+
+        message.textContent =
+            "No se pudo guardar el enlace: " +
+            error.message;
+
+
+        message.style.display =
+            "block";
+
+    }
 
 }
 
 
+
 /* ==========================================
-   INICIAR
+   GALERIA
 ========================================== */
 
-checkSession();
+document
+.getElementById("galleryPhotoForm")
+.addEventListener(
+    "submit",
+    function(event){
+
+        event.preventDefault();
+
+
+        const files =
+            document
+            .getElementById(
+                "galleryImages"
+            )
+            .files;
+
+
+        if(!files.length){
+
+            alert(
+                "Selecciona al menos una fotografía."
+            );
+
+            return;
+
+        }
+
+
+        alert(
+            "La carga de fotografías de la galería se configurará en el siguiente paso."
+        );
+
+    }
+);
+
+
+
+document
+.getElementById("galleryVideoForm")
+.addEventListener(
+    "submit",
+    function(event){
+
+        event.preventDefault();
+
+
+        const files =
+            document
+            .getElementById(
+                "galleryVideos"
+            )
+            .files;
+
+
+        if(!files.length){
+
+            alert(
+                "Selecciona al menos un video."
+            );
+
+            return;
+
+        }
+
+
+        alert(
+            "La carga de videos de la galería se configurará en el siguiente paso."
+        );
+
+    }
+);
+
+
+
+/* ==========================================
+   FUNCIONES AUXILIARES
+========================================== */
+
+function escapeHtml(value){
+
+    return String(value || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+}
+
+
+
+function formatPrice(value){
+
+    const number =
+        Number(value || 0);
+
+
+    return "$" +
+        number.toLocaleString(
+            "es-CO"
+        );
+
+}
+
+
+
+/* ==========================================
+   INICIAR ADMINISTRADOR
+========================================== */
+
+async function initializeAdmin(){
+
+    await checkSession();
+
+
+    const {
+        data: {
+            session
+        }
+    } =
+    await supabaseClient
+        .auth
+        .getSession();
+
+
+    if(session){
+
+        await loadConfiguracion();
+
+    }
+
+}
+
+
+initializeAdmin();
 
 </script>
 
