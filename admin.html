@@ -6,6 +6,9 @@
 
   <title>Administrador | Goticas de Felicidad</title>
 
+  <!-- Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
   <style>
     * {
       box-sizing: border-box;
@@ -19,7 +22,9 @@
       color: #222;
     }
 
-    /* LOGIN */
+    /* =========================
+       LOGIN
+    ========================= */
 
     .login-container {
       min-height: 100vh;
@@ -27,7 +32,7 @@
       justify-content: center;
       align-items: center;
       padding: 20px;
-      background: linear-gradient(135deg, #111111, #2b2b2b);
+      background: linear-gradient(135deg, #111, #2b2b2b);
     }
 
     .login-box {
@@ -93,11 +98,15 @@
       font-size: 16px;
       font-weight: bold;
       cursor: pointer;
-      transition: 0.2s;
     }
 
     .login-button:hover {
       background: #9e0000;
+    }
+
+    .login-button:disabled {
+      background: #999;
+      cursor: not-allowed;
     }
 
     .login-message {
@@ -107,7 +116,9 @@
       color: #c40000;
     }
 
-    /* PANEL */
+    /* =========================
+       PANEL
+    ========================= */
 
     .admin-panel {
       display: none;
@@ -166,7 +177,9 @@
       min-height: calc(100vh - 70px);
     }
 
-    /* SIDEBAR */
+    /* =========================
+       SIDEBAR
+    ========================= */
 
     .sidebar {
       width: 250px;
@@ -200,7 +213,9 @@
       background: #c40000;
     }
 
-    /* CONTENT */
+    /* =========================
+       CONTENT
+    ========================= */
 
     .content {
       flex: 1;
@@ -229,7 +244,9 @@
       color: #666;
     }
 
-    /* CARDS */
+    /* =========================
+       CARDS
+    ========================= */
 
     .cards {
       display: grid;
@@ -257,7 +274,9 @@
       color: #c40000;
     }
 
-    /* FORMS */
+    /* =========================
+       FORMS
+    ========================= */
 
     .form-card {
       background: white;
@@ -324,18 +343,9 @@
       background: #006f2c;
     }
 
-    .secondary-button {
-      background: #333;
-      color: white;
-      border: none;
-      padding: 12px 20px;
-      border-radius: 7px;
-      cursor: pointer;
-      font-weight: bold;
-      font-size: 14px;
-    }
-
-    /* PRODUCTS */
+    /* =========================
+       PRODUCTS
+    ========================= */
 
     .product-list {
       display: grid;
@@ -405,7 +415,9 @@
       color: white;
     }
 
-    /* MEDIA */
+    /* =========================
+       MEDIA
+    ========================= */
 
     .upload-area {
       border: 2px dashed #bbb;
@@ -421,7 +433,9 @@
       margin-bottom: 15px;
     }
 
-    /* ALERT */
+    /* =========================
+       ALERT
+    ========================= */
 
     .alert {
       display: none;
@@ -445,9 +459,12 @@
       border: 1px solid #f0bcbc;
     }
 
-    /* RESPONSIVE */
+    /* =========================
+       RESPONSIVE
+    ========================= */
 
     @media (max-width: 1000px) {
+
       .cards {
         grid-template-columns: 1fr 1fr;
       }
@@ -459,9 +476,11 @@
       .sidebar {
         width: 210px;
       }
+
     }
 
     @media (max-width: 750px) {
+
       .layout {
         flex-direction: column;
       }
@@ -507,15 +526,17 @@
         width: 45px;
         height: 45px;
       }
+
     }
+
   </style>
 </head>
 
 <body>
 
-<!-- ========================= -->
-<!-- LOGIN -->
-<!-- ========================= -->
+<!-- =====================================================
+     LOGIN
+===================================================== -->
 
 <div id="loginScreen" class="login-container">
 
@@ -530,38 +551,56 @@
     <h1>Panel de administrador</h1>
 
     <p>
-      Accede para administrar el contenido de Goticas de Felicidad.
+      Accede para administrar Goticas de Felicidad.
     </p>
 
     <form id="loginForm">
 
       <div class="input-group">
-        <label for="email">Usuario / correo</label>
+
+        <label for="email">
+          Correo electrónico
+        </label>
 
         <input
           type="email"
           id="email"
-          placeholder="Correo del administrador"
+          placeholder="Ingresa tu correo"
           required
         >
+
       </div>
 
+
       <div class="input-group">
-        <label for="password">Contraseña</label>
+
+        <label for="password">
+          Contraseña
+        </label>
 
         <input
           type="password"
           id="password"
-          placeholder="Contraseña"
+          placeholder="Ingresa tu contraseña"
           required
         >
+
       </div>
 
-      <button type="submit" class="login-button">
+
+      <button
+        type="submit"
+        class="login-button"
+        id="loginButton"
+      >
         Iniciar sesión
       </button>
 
-      <div id="loginMessage" class="login-message"></div>
+
+      <div
+        id="loginMessage"
+        class="login-message"
+      ></div>
 
     </form>
 
@@ -570,9 +609,9 @@
 </div>
 
 
-<!-- ========================= -->
-<!-- PANEL ADMINISTRADOR -->
-<!-- ========================= -->
+<!-- =====================================================
+     PANEL
+===================================================== -->
 
 <div id="adminPanel" class="admin-panel">
 
@@ -588,13 +627,17 @@
         class="topbar-logo"
       >
 
-      <div>
-        <h2>Administración de Goticas de Felicidad</h2>
-      </div>
+      <h2>
+        Administración de Goticas de Felicidad
+      </h2>
 
     </div>
 
-    <button id="logoutButton" class="logout-button">
+
+    <button
+      id="logoutButton"
+      class="logout-button"
+    >
       Cerrar sesión
     </button>
 
@@ -616,12 +659,14 @@
         Inicio
       </button>
 
+
       <button
         class="menu-button"
         onclick="showSection('productos', this)"
       >
         Productos
       </button>
+
 
       <button
         class="menu-button"
@@ -630,6 +675,7 @@
         Galería
       </button>
 
+
       <button
         class="menu-button"
         onclick="showSection('textos', this)"
@@ -637,12 +683,14 @@
         Textos de la página
       </button>
 
+
       <button
         class="menu-button"
         onclick="showSection('contacto', this)"
       >
         Contacto
       </button>
+
 
       <button
         class="menu-button"
@@ -654,22 +702,24 @@
     </aside>
 
 
-    <!-- CONTENT -->
+    <!-- CONTENIDO -->
 
     <main class="content">
 
-      <!-- ========================= -->
-      <!-- INICIO -->
-      <!-- ========================= -->
+      <!-- =========================
+           INICIO
+      ========================= -->
 
       <section id="inicio" class="section active">
 
         <div class="page-title">
 
-          <h1>Panel principal</h1>
+          <h1>
+            Panel principal
+          </h1>
 
           <p>
-            Administración del contenido de Goticas de Felicidad.
+            Administración de Goticas de Felicidad.
           </p>
 
         </div>
@@ -678,18 +728,50 @@
         <div class="cards">
 
           <div class="card">
-            <h3>Productos</h3>
-            <div class="number" id="productCount">0</div>
+
+            <h3>
+              Productos
+            </h3>
+
+            <div
+              class="number"
+              id="productCount"
+            >
+              0
+            </div>
+
           </div>
 
-          <div class="card">
-            <h3>Fotografías</h3>
-            <div class="number" id="photoCount">0</div>
-          </div>
 
           <div class="card">
-            <h3>Videos</h3>
-            <div class="number" id="videoCount">0</div>
+
+            <h3>
+              Fotografías
+            </h3>
+
+            <div
+              class="number"
+              id="photoCount"
+            >
+              0
+            </div>
+
+          </div>
+
+
+          <div class="card">
+
+            <h3>
+              Videos
+            </h3>
+
+            <div
+              class="number"
+              id="videoCount"
+            >
+              0
+            </div>
+
           </div>
 
         </div>
@@ -697,18 +779,18 @@
 
         <div class="form-card">
 
-          <h2>Bienvenido al administrador</h2>
+          <h2>
+            Bienvenido
+          </h2>
 
-          <p style="line-height: 1.7; color: #555;">
+          <p style="line-height:1.7;color:#555;">
 
-            Desde este panel podrás administrar los productos,
-            fotografías, videos, textos y datos de contacto de
-            Goticas de Felicidad.
+            Ya estás dentro del panel administrativo.
 
             <br><br>
 
-            La conexión con la base de datos y el almacenamiento
-            de fotografías se configurará en el siguiente paso.
+            Desde aquí podrás administrar el contenido
+            de Goticas de Felicidad.
 
           </p>
 
@@ -717,29 +799,37 @@
       </section>
 
 
-      <!-- ========================= -->
-      <!-- PRODUCTOS -->
-      <!-- ========================= -->
+      <!-- =========================
+           PRODUCTOS
+      ========================= -->
 
       <section id="productos" class="section">
 
         <div class="page-title">
 
-          <h1>Productos</h1>
+          <h1>
+            Productos
+          </h1>
 
           <p>
-            Administra los desayunos, anchetas y demás productos.
+            Administra los productos de Goticas de Felicidad.
           </p>
 
         </div>
 
 
-        <div id="productAlert" class="alert"></div>
+        <div
+          id="productAlert"
+          class="alert"
+        ></div>
 
 
         <div class="form-card">
 
-          <h2>Agregar producto</h2>
+          <h2>
+            Agregar producto
+          </h2>
+
 
           <form id="productForm">
 
@@ -767,7 +857,10 @@
                   Categoría
                 </label>
 
-                <select id="productCategory" required>
+                <select
+                  id="productCategory"
+                  required
+                >
 
                   <option value="">
                     Seleccionar categoría
@@ -799,8 +892,8 @@
                 <input
                   type="number"
                   id="productPrice"
-                  placeholder="Ejemplo: 120000"
                   min="0"
+                  placeholder="Ejemplo: 120000"
                   required
                 >
 
@@ -830,7 +923,7 @@
 
                 <textarea
                   id="productDescription"
-                  placeholder="Describe el producto..."
+                  placeholder="Descripción del producto"
                   required
                 ></textarea>
 
@@ -839,7 +932,10 @@
             </div>
 
 
-            <button type="submit" class="save-button">
+            <button
+              type="submit"
+              class="save-button"
+            >
               Guardar producto
             </button>
 
@@ -850,24 +946,30 @@
 
         <div class="form-card">
 
-          <h2>Productos registrados</h2>
+          <h2>
+            Productos registrados
+          </h2>
 
-          <div id="productList" class="product-list">
+
+          <div
+            id="productList"
+            class="product-list"
+          >
 
             <div class="product-card">
 
               <div class="product-image">
-                Sin productos registrados
+                No hay productos todavía.
               </div>
 
               <div class="product-info">
 
                 <h3>
-                  Aún no hay productos
+                  Sin productos
                 </h3>
 
                 <p class="product-description">
-                  Los productos que agregues aparecerán aquí.
+                  Los productos aparecerán aquí.
                 </p>
 
               </div>
@@ -881,18 +983,20 @@
       </section>
 
 
-      <!-- ========================= -->
-      <!-- GALERÍA -->
-      <!-- ========================= -->
+      <!-- =========================
+           GALERÍA
+      ========================= -->
 
       <section id="galeria" class="section">
 
         <div class="page-title">
 
-          <h1>Galería</h1>
+          <h1>
+            Galería
+          </h1>
 
           <p>
-            Administra las fotografías y videos de la página.
+            Administra las fotografías y videos.
           </p>
 
         </div>
@@ -900,12 +1004,14 @@
 
         <div class="form-card">
 
-          <h2>Subir fotografías</h2>
+          <h2>
+            Fotografías
+          </h2>
 
           <div class="upload-area">
 
             <p>
-              Selecciona una o varias fotografías para la galería.
+              Selecciona las fotografías.
             </p>
 
             <input
@@ -916,6 +1022,7 @@
             >
 
           </div>
+
 
           <button
             class="save-button"
@@ -930,12 +1037,14 @@
 
         <div class="form-card">
 
-          <h2>Subir videos</h2>
+          <h2>
+            Videos
+          </h2>
 
           <div class="upload-area">
 
             <p>
-              Selecciona un video para agregarlo a la galería.
+              Selecciona los videos.
             </p>
 
             <input
@@ -946,6 +1055,7 @@
             >
 
           </div>
+
 
           <button
             class="save-button"
@@ -960,18 +1070,20 @@
       </section>
 
 
-      <!-- ========================= -->
-      <!-- TEXTOS -->
-      <!-- ========================= -->
+      <!-- =========================
+           TEXTOS
+      ========================= -->
 
       <section id="textos" class="section">
 
         <div class="page-title">
 
-          <h1>Textos de la página</h1>
+          <h1>
+            Textos de la página
+          </h1>
 
           <p>
-            Modifica los textos que aparecen en la página principal.
+            Modifica los textos principales.
           </p>
 
         </div>
@@ -1032,18 +1144,20 @@
       </section>
 
 
-      <!-- ========================= -->
-      <!-- CONTACTO -->
-      <!-- ========================= -->
+      <!-- =========================
+           CONTACTO
+      ========================= -->
 
       <section id="contacto" class="section">
 
         <div class="page-title">
 
-          <h1>Información de contacto</h1>
+          <h1>
+            Información de contacto
+          </h1>
 
           <p>
-            Administra los datos que utilizarán los clientes.
+            Administra los datos de contacto.
           </p>
 
         </div>
@@ -1056,7 +1170,7 @@
             <div class="form-group">
 
               <label for="whatsapp">
-                Número de WhatsApp
+                WhatsApp
               </label>
 
               <input
@@ -1071,7 +1185,7 @@
             <div class="form-group">
 
               <label for="tiktok">
-                Usuario de TikTok
+                TikTok
               </label>
 
               <input
@@ -1112,19 +1226,21 @@
       </section>
 
 
-      <!-- ========================= -->
-      <!-- GOOGLE -->
-      <!-- ========================= -->
+      <!-- =========================
+           GOOGLE
+      ========================= -->
 
       <section id="google" class="section">
 
         <div class="page-title">
 
-          <h1>Reseñas de Google</h1>
+          <h1>
+            Reseñas de Google
+          </h1>
 
           <p>
-            Configura el enlace que llevará directamente a los clientes
-            al formulario para dejar una reseña.
+            Configura el enlace directo para que los clientes
+            puedan dejar una reseña.
           </p>
 
         </div>
@@ -1132,7 +1248,10 @@
 
         <div class="form-card">
 
-          <h2>Enlace de reseñas</h2>
+          <h2>
+            Enlace de reseñas
+          </h2>
+
 
           <div class="form-group">
 
@@ -1143,7 +1262,7 @@
             <input
               type="url"
               id="googleReviewUrl"
-              placeholder="Pega aquí el enlace de reseñas de Google"
+              placeholder="Pega aquí el enlace de Google"
             >
 
           </div>
@@ -1161,24 +1280,8 @@
           <div
             id="googleMessage"
             class="alert"
-            style="margin-top: 20px;"
+            style="margin-top:20px;"
           ></div>
-
-        </div>
-
-
-        <div class="form-card">
-
-          <h2>¿Cómo funcionará?</h2>
-
-          <p style="line-height: 1.7; color: #555;">
-
-            Una vez configurado el enlace, el botón de reseñas
-            de la página principal enviará al cliente directamente
-            al sitio de Google donde podrá escribir y publicar
-            su reseña.
-
-          </p>
 
         </div>
 
@@ -1193,186 +1296,274 @@
 
 <script>
 
-/* ==========================================
-   LOGIN TEMPORAL
-========================================== */
+/* =====================================================
+   CONFIGURACIÓN SUPABASE
+===================================================== */
 
-/*
-  IMPORTANTE:
+const SUPABASE_URL =
+  "https://nkqlvtaahdohlvwstbkw.supabase.co";
 
-  Esta pantalla todavía no realiza una autenticación real.
-
-  En el siguiente paso conectaremos este panel con Supabase
-  para utilizar usuario y contraseña de forma segura.
-*/
-
-const loginForm = document.getElementById("loginForm");
-
-loginForm.addEventListener("submit", function(event) {
-
-  event.preventDefault();
-
-  const message = document.getElementById("loginMessage");
-
-  message.textContent =
-    "El acceso se conectará con Supabase en el siguiente paso.";
-
-});
+const SUPABASE_PUBLISHABLE_KEY =
+  "sb_publishable_6l7hmgao4yyXlwvBz4Y_Cg_-ywlhGrg";
 
 
-/* ==========================================
+const supabaseClient =
+  window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+  );
+
+
+/* =====================================================
+   ELEMENTOS
+===================================================== */
+
+const loginScreen =
+  document.getElementById("loginScreen");
+
+const adminPanel =
+  document.getElementById("adminPanel");
+
+const loginForm =
+  document.getElementById("loginForm");
+
+const loginMessage =
+  document.getElementById("loginMessage");
+
+const loginButton =
+  document.getElementById("loginButton");
+
+
+/* =====================================================
+   COMPROBAR SESIÓN
+===================================================== */
+
+async function checkSession() {
+
+  const {
+    data: { session }
+  } = await supabaseClient.auth.getSession();
+
+
+  if (session) {
+
+    showAdminPanel();
+
+  } else {
+
+    showLogin();
+
+  }
+
+}
+
+
+/* =====================================================
+   MOSTRAR LOGIN
+===================================================== */
+
+function showLogin() {
+
+  loginScreen.style.display = "flex";
+
+  adminPanel.style.display = "none";
+
+}
+
+
+/* =====================================================
+   MOSTRAR ADMIN
+===================================================== */
+
+function showAdminPanel() {
+
+  loginScreen.style.display = "none";
+
+  adminPanel.style.display = "block";
+
+}
+
+
+/* =====================================================
+   INICIAR SESIÓN
+===================================================== */
+
+loginForm.addEventListener(
+  "submit",
+  async function(event) {
+
+    event.preventDefault();
+
+
+    const email =
+      document.getElementById("email").value.trim();
+
+    const password =
+      document.getElementById("password").value;
+
+
+    loginMessage.textContent = "";
+
+    loginButton.disabled = true;
+
+    loginButton.textContent = "Verificando...";
+
+
+    const {
+      data,
+      error
+    } = await supabaseClient.auth.signInWithPassword({
+      email: email,
+      password: password
+    });
+
+
+    if (error) {
+
+      loginMessage.textContent =
+        "Correo o contraseña incorrectos.";
+
+      loginButton.disabled = false;
+
+      loginButton.textContent = "Iniciar sesión";
+
+      console.error(error);
+
+      return;
+
+    }
+
+
+    loginMessage.textContent = "";
+
+    loginButton.disabled = false;
+
+    loginButton.textContent = "Iniciar sesión";
+
+
+    showAdminPanel();
+
+  }
+);
+
+
+/* =====================================================
+   CERRAR SESIÓN
+===================================================== */
+
+document
+  .getElementById("logoutButton")
+  .addEventListener(
+    "click",
+    async function() {
+
+      await supabaseClient.auth.signOut();
+
+      showLogin();
+
+      document.getElementById("email").value = "";
+
+      document.getElementById("password").value = "";
+
+    }
+  );
+
+
+/* =====================================================
    NAVEGACIÓN
-========================================== */
+===================================================== */
 
 function showSection(sectionId, button) {
 
-  const sections = document.querySelectorAll(".section");
+  const sections =
+    document.querySelectorAll(".section");
+
 
   sections.forEach(function(section) {
+
     section.classList.remove("active");
+
   });
 
 
   const selectedSection =
     document.getElementById(sectionId);
 
+
   if (selectedSection) {
+
     selectedSection.classList.add("active");
+
   }
 
 
   const buttons =
     document.querySelectorAll(".menu-button");
 
+
   buttons.forEach(function(btn) {
+
     btn.classList.remove("active");
+
   });
 
 
   if (button) {
+
     button.classList.add("active");
+
   }
 
 }
 
 
-/* ==========================================
+/* =====================================================
    PRODUCTOS
-========================================== */
+===================================================== */
 
-const productForm =
-  document.getElementById("productForm");
+document
+  .getElementById("productForm")
+  .addEventListener(
+    "submit",
+    function(event) {
 
-
-productForm.addEventListener("submit", function(event) {
-
-  event.preventDefault();
-
-  const name =
-    document.getElementById("productName").value;
-
-  const category =
-    document.getElementById("productCategory").value;
-
-  const price =
-    document.getElementById("productPrice").value;
-
-  const description =
-    document.getElementById("productDescription").value;
+      event.preventDefault();
 
 
-  const list =
-    document.getElementById("productList");
+      const alertBox =
+        document.getElementById("productAlert");
 
 
-  const card =
-    document.createElement("div");
+      alertBox.className = "alert success";
 
-  card.className = "product-card";
+      alertBox.textContent =
+        "El inicio de sesión ya está conectado con Supabase. La base de datos de productos se configurará en el siguiente paso.";
 
-
-  card.innerHTML = `
-
-    <div class="product-image">
-      Imagen pendiente de almacenamiento
-    </div>
-
-    <div class="product-info">
-
-      <h3>${name}</h3>
-
-      <div class="product-price">
-        $${Number(price).toLocaleString("es-CO")}
-      </div>
-
-      <p style="font-size:13px; color:#888; margin-bottom:8px;">
-        ${category}
-      </p>
-
-      <p class="product-description">
-        ${description}
-      </p>
-
-      <div class="product-actions">
-
-        <button
-          class="edit-button"
-          type="button"
-        >
-          Editar
-        </button>
-
-        <button
-          class="delete-button"
-          type="button"
-          onclick="this.closest('.product-card').remove()"
-        >
-          Eliminar
-        </button>
-
-      </div>
-
-    </div>
-
-  `;
+    }
+  );
 
 
-  list.appendChild(card);
-
-
-  productForm.reset();
-
-
-  const alert =
-    document.getElementById("productAlert");
-
-  alert.className = "alert success";
-
-  alert.textContent =
-    "Producto agregado temporalmente. La conexión permanente se realizará con Supabase.";
-
-});
-
-
-/* ==========================================
+/* =====================================================
    GALERÍA
-========================================== */
+===================================================== */
 
 function uploadImages() {
 
   const files =
     document.getElementById("galleryImages").files;
 
+
   if (files.length === 0) {
 
     alert("Selecciona al menos una fotografía.");
 
     return;
+
   }
 
 
   alert(
-    "Las fotografías quedarán almacenadas cuando conectemos Supabase Storage."
+    "La autenticación ya funciona. El almacenamiento de fotografías se configurará en el siguiente paso."
   );
 
 }
@@ -1383,67 +1574,75 @@ function uploadVideos() {
   const files =
     document.getElementById("galleryVideos").files;
 
+
   if (files.length === 0) {
 
     alert("Selecciona al menos un video.");
 
     return;
+
   }
 
 
   alert(
-    "Los videos quedarán almacenados cuando conectemos Supabase Storage."
+    "La autenticación ya funciona. El almacenamiento de videos se configurará en el siguiente paso."
   );
 
 }
 
 
-/* ==========================================
+/* =====================================================
    TEXTOS
-========================================== */
+===================================================== */
 
-const textsForm =
-  document.getElementById("textsForm");
+document
+  .getElementById("textsForm")
+  .addEventListener(
+    "submit",
+    function(event) {
 
+      event.preventDefault();
 
-textsForm.addEventListener("submit", function(event) {
+      alert(
+        "Los textos se conectarán a la base de datos en el siguiente paso."
+      );
 
-  event.preventDefault();
-
-  alert(
-    "Los textos se guardarán permanentemente cuando conectemos la base de datos."
+    }
   );
 
-});
 
-
-/* ==========================================
+/* =====================================================
    CONTACTO
-========================================== */
+===================================================== */
 
-const contactForm =
-  document.getElementById("contactForm");
+document
+  .getElementById("contactForm")
+  .addEventListener(
+    "submit",
+    function(event) {
 
+      event.preventDefault();
 
-contactForm.addEventListener("submit", function(event) {
+      alert(
+        "La información de contacto se conectará a la base de datos en el siguiente paso."
+      );
 
-  event.preventDefault();
-
-  alert(
-    "La información de contacto se guardará permanentemente cuando conectemos la base de datos."
+    }
   );
 
-});
 
-
-/* ==========================================
+/* =====================================================
    GOOGLE REVIEWS
-========================================== */
+===================================================== */
 
 function saveGoogleReviewUrl() {
 
   const url =
-    document.getElementById("googleReviewUrl").value.trim();
+    document
+      .getElementById("googleReviewUrl")
+      .value
+      .trim();
+
 
   const message =
     document.getElementById("googleMessage");
@@ -1457,30 +1656,23 @@ function saveGoogleReviewUrl() {
       "Debes ingresar el enlace de Google Reviews.";
 
     return;
+
   }
 
 
   message.className = "alert success";
 
   message.textContent =
-    "El enlace fue recibido. En la siguiente etapa lo conectaremos con la página pública.";
+    "El enlace fue recibido. Lo conectaremos con la página pública en el siguiente paso.";
 
 }
 
 
-/* ==========================================
-   CERRAR SESIÓN
-========================================== */
+/* =====================================================
+   INICIAR
+===================================================== */
 
-document
-  .getElementById("logoutButton")
-  .addEventListener("click", function() {
-
-    document.getElementById("adminPanel").style.display = "none";
-
-    document.getElementById("loginScreen").style.display = "flex";
-
-  });
+checkSession();
 
 </script>
 
