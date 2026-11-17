@@ -17,6 +17,7 @@
 
     <title>Goticas de Felicidad | Desayunos, Anchetas y Decoración</title>
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
     <style>
 
@@ -46,7 +47,6 @@
             --gris: #f4f4f4;
             --blanco: #ffffff;
         }
-
 
         /* ==========================
            NAVEGACIÓN
@@ -124,7 +124,6 @@
             background: var(--verde);
             color: white !important;
         }
-
 
         /* ==========================
            HERO
@@ -251,7 +250,6 @@
                 0 25px 70px rgba(0, 0, 0, 0.7);
         }
 
-
         /* ==========================
            SECCIONES
         ========================== */
@@ -285,7 +283,6 @@
             color: #666666;
             font-size: 17px;
         }
-
 
         /* ==========================
            SERVICIOS
@@ -366,7 +363,6 @@
             font-weight: bold;
         }
 
-
         /* ==========================
            GALERÍA
         ========================== */
@@ -407,7 +403,6 @@
             font-size: 18px;
             font-weight: bold;
         }
-
 
         /* ==========================
            NOSOTROS
@@ -457,7 +452,6 @@
             width: 330px;
             max-width: 100%;
         }
-
 
         /* ==========================
            RESEÑAS
@@ -510,7 +504,6 @@
             font-size: 17px;
             margin-bottom: 25px;
         }
-
 
         /* ==========================
            CONTACTO
@@ -565,7 +558,6 @@
             color: var(--rojo);
         }
 
-
         /* ==========================
            FOOTER
         ========================== */
@@ -601,7 +593,6 @@
         .social a:hover {
             color: var(--rojo);
         }
-
 
         /* ==========================
            RESPONSIVE
@@ -656,7 +647,6 @@
             }
         }
 
-
         @media (max-width: 600px) {
 
             .navbar {
@@ -705,9 +695,7 @@
 
 </head>
 
-
 <body>
-
 
 <!-- ==========================================
      NAVEGACIÓN
@@ -716,7 +704,6 @@
 <nav class="navbar">
 
     <div class="nav-container">
-
 
         <a href="#inicio" class="marca">
 
@@ -732,7 +719,6 @@
             </div>
 
         </a>
-
 
         <ul class="menu">
 
@@ -791,7 +777,6 @@
 </nav>
 
 
-
 <!-- ==========================================
      INICIO
 ========================================== -->
@@ -802,9 +787,7 @@
 
     <div class="hero-container">
 
-
         <div class="hero-text">
-
 
             <div class="marca-pequena">
 
@@ -812,8 +795,7 @@
 
             </div>
 
-
-            <h1>
+            <h1 id="heroTitle">
 
                 Creamos momentos
                 <span>
@@ -822,8 +804,7 @@
 
             </h1>
 
-
-            <p>
+            <p id="heroDescription">
 
                 Desayunos sorpresa, anchetas, detalles
                 personalizados y decoración para convertir
@@ -831,11 +812,10 @@
 
             </p>
 
-
             <div class="botones">
 
-
                 <a
+                    id="heroWhatsapp"
                     href="https://wa.me/573142955025?text=Hola%20Goticas%20de%20Felicidad,%20quiero%20información%20sobre%20sus%20productos."
                     target="_blank"
                     class="btn btn-rojo">
@@ -843,7 +823,6 @@
                     WhatsApp
 
                 </a>
-
 
                 <a
                     href="#servicios"
@@ -856,7 +835,6 @@
             </div>
 
         </div>
-
 
         <div class="hero-logo">
 
@@ -871,7 +849,6 @@
 </header>
 
 
-
 <!-- ==========================================
      SERVICIOS
 ========================================== -->
@@ -880,9 +857,7 @@
     class="servicios"
     id="servicios">
 
-
     <div class="container">
-
 
         <div class="section-title">
 
@@ -895,7 +870,6 @@
 
             </h2>
 
-
             <p>
 
                 Encuentra el detalle perfecto para
@@ -905,9 +879,7 @@
 
         </div>
 
-
         <div class="servicios-grid">
-
 
             <article class="servicio">
 
@@ -917,13 +889,11 @@
 
                 </div>
 
-
                 <div class="servicio-contenido">
 
                     <h3>
                         Desayunos sorpresa
                     </h3>
-
 
                     <p>
 
@@ -932,7 +902,6 @@
                         especiales.
 
                     </p>
-
 
                     <a
                         href="#galeria"
@@ -947,7 +916,6 @@
             </article>
 
 
-
             <article class="servicio">
 
                 <div class="servicio-imagen">
@@ -956,13 +924,11 @@
 
                 </div>
 
-
                 <div class="servicio-contenido">
 
                     <h3>
                         Anchetas y detalles
                     </h3>
-
 
                     <p>
 
@@ -971,7 +937,6 @@
                         quieres.
 
                     </p>
-
 
                     <a
                         href="#galeria"
@@ -986,7 +951,6 @@
             </article>
 
 
-
             <article class="servicio">
 
                 <div class="servicio-imagen">
@@ -995,13 +959,11 @@
 
                 </div>
 
-
                 <div class="servicio-contenido">
 
                     <h3>
                         Decoración y fiestas
                     </h3>
-
 
                     <p>
 
@@ -1009,7 +971,6 @@
                         celebraciones y diferentes tipos de eventos.
 
                     </p>
-
 
                     <a
                         href="#galeria"
@@ -1030,7 +991,6 @@
 </section>
 
 
-
 <!-- ==========================================
      GALERÍA
 ========================================== -->
@@ -1039,9 +999,7 @@
     class="galeria"
     id="galeria">
 
-
     <div class="container">
-
 
         <div class="section-title">
 
@@ -1054,7 +1012,6 @@
 
             </h2>
 
-
             <p>
 
                 Muy pronto podrás ver aquí nuestros
@@ -1064,9 +1021,7 @@
 
         </div>
 
-
         <div class="galeria-grid">
-
 
             <div class="galeria-item">
 
@@ -1076,7 +1031,6 @@
 
             </div>
 
-
             <div class="galeria-item">
 
                 <span>
@@ -1084,7 +1038,6 @@
                 </span>
 
             </div>
-
 
             <div class="galeria-item">
 
@@ -1094,7 +1047,6 @@
 
             </div>
 
-
             <div class="galeria-item">
 
                 <span>
@@ -1103,7 +1055,6 @@
 
             </div>
 
-
             <div class="galeria-item">
 
                 <span>
@@ -1111,7 +1062,6 @@
                 </span>
 
             </div>
-
 
             <div class="galeria-item">
 
@@ -1128,7 +1078,6 @@
 </section>
 
 
-
 <!-- ==========================================
      NOSOTROS
 ========================================== -->
@@ -1137,15 +1086,11 @@
     class="nosotros"
     id="nosotros">
 
-
     <div class="container">
-
 
         <div class="nosotros-grid">
 
-
             <div class="nosotros-texto">
-
 
                 <h2>
 
@@ -1156,15 +1101,13 @@
 
                 </h2>
 
-
-                <p>
+                <p id="aboutText">
 
                     En Goticas de Felicidad creamos
                     detalles para acompañar esos momentos
                     que quieres convertir en recuerdos.
 
                 </p>
-
 
                 <p>
 
@@ -1174,7 +1117,6 @@
 
                 </p>
 
-
                 <div class="frase">
 
                     Creamos momentos que hacen sonreír.
@@ -1182,7 +1124,6 @@
                 </div>
 
             </div>
-
 
             <div class="nosotros-logo">
 
@@ -1199,7 +1140,6 @@
 </section>
 
 
-
 <!-- ==========================================
      RESEÑAS GOOGLE
 ========================================== -->
@@ -1208,9 +1148,7 @@
     class="resenas"
     id="resenas">
 
-
     <div class="container">
-
 
         <div class="section-title">
 
@@ -1225,9 +1163,7 @@
 
         </div>
 
-
         <div class="google-box">
-
 
             <div class="google-logo">
 
@@ -1239,13 +1175,11 @@
 
             </div>
 
-
             <div class="estrellas">
 
                 ★★★★★
 
             </div>
-
 
             <p>
 
@@ -1254,10 +1188,12 @@
 
             </p>
 
-
             <a
+                id="googleReviewButton"
                 href="#"
-                class="btn btn-rojo">
+                class="btn btn-rojo"
+                target="_blank"
+                rel="noopener noreferrer">
 
                 Ver reseñas en Google
 
@@ -1270,7 +1206,6 @@
 </section>
 
 
-
 <!-- ==========================================
      CONTACTO
 ========================================== -->
@@ -1279,9 +1214,7 @@
     class="contacto"
     id="contacto">
 
-
     <div class="container">
-
 
         <div class="section-title">
 
@@ -1294,7 +1227,6 @@
 
             </h2>
 
-
             <p>
 
                 Escríbenos y cuéntanos qué tienes
@@ -1304,9 +1236,7 @@
 
         </div>
 
-
         <div class="contacto-grid">
-
 
             <div class="contacto-card">
 
@@ -1314,10 +1244,10 @@
                     WhatsApp
                 </h3>
 
-
                 <p>
 
                     <a
+                        id="whatsappContact"
                         href="https://wa.me/573142955025"
                         target="_blank">
 
@@ -1330,17 +1260,16 @@
             </div>
 
 
-
             <div class="contacto-card">
 
                 <h3>
                     TikTok
                 </h3>
 
-
                 <p>
 
                     <a
+                        id="tiktokContact"
                         href="https://www.tiktok.com/@johannarojas1989"
                         target="_blank">
 
@@ -1353,13 +1282,11 @@
             </div>
 
 
-
             <div class="contacto-card">
 
                 <h3>
                     Atención personalizada
                 </h3>
-
 
                 <p>
 
@@ -1377,18 +1304,15 @@
 </section>
 
 
-
 <!-- ==========================================
      FOOTER
 ========================================== -->
 
 <footer>
 
-
     <img
         src="logo-png.2.png"
         alt="Logo Goticas de Felicidad">
-
 
     <p>
 
@@ -1396,17 +1320,16 @@
 
     </p>
 
-
     <p>
 
         Desayunos sorpresa, anchetas y decoración
 
     </p>
 
-
     <div class="social">
 
         <a
+            id="tiktokFooter"
             href="https://www.tiktok.com/@johannarojas1989"
             target="_blank">
 
@@ -1416,9 +1339,299 @@
 
     </div>
 
-
 </footer>
 
+
+<script>
+
+    const SUPABASE_URL =
+        "https://nkqlvtaahdohlvwstbkw.supabase.co";
+
+    const SUPABASE_ANON_KEY =
+        "sb_publishable_6l7hmgao4yyXlwvBz4Y_Cg_-ywlhGrg";
+
+    const supabaseClient =
+        window.supabase.createClient(
+            SUPABASE_URL,
+            SUPABASE_ANON_KEY
+        );
+
+
+    function normalizarWhatsApp(numero) {
+
+        let limpio =
+            String(numero || "").replace(/\D/g, "");
+
+        if (limpio.startsWith("57")) {
+            return limpio;
+        }
+
+        if (limpio.length === 10) {
+            return "57" + limpio;
+        }
+
+        return limpio;
+    }
+
+
+    function normalizarTikTok(valor) {
+
+        const texto =
+            String(valor || "").trim();
+
+        if (!texto) {
+            return "";
+        }
+
+        if (
+            texto.startsWith("http://") ||
+            texto.startsWith("https://")
+        ) {
+            return texto;
+        }
+
+        if (texto.startsWith("@")) {
+            return "https://www.tiktok.com/" + texto;
+        }
+
+        return "https://www.tiktok.com/@" + texto;
+    }
+
+
+    async function cargarConfiguracionPublica() {
+
+        try {
+
+            const { data, error } =
+                await supabaseClient
+                    .from("configuracion")
+                    .select("*")
+                    .order("id", {
+                        ascending: true
+                    })
+                    .limit(1);
+
+
+            if (error) {
+
+                console.error(
+                    "Error al cargar configuración:",
+                    error
+                );
+
+                return;
+            }
+
+
+            if (!data || data.length === 0) {
+
+                return;
+
+            }
+
+
+            const config = data[0];
+
+
+            const heroTitle =
+                document.getElementById("heroTitle");
+
+            const heroDescription =
+                document.getElementById("heroDescription");
+
+            const aboutText =
+                document.getElementById("aboutText");
+
+
+            if (
+                heroTitle &&
+                config.hero_title
+            ) {
+
+                heroTitle.textContent =
+                    config.hero_title;
+
+            }
+
+
+            if (
+                heroDescription &&
+                config.hero_description
+            ) {
+
+                heroDescription.textContent =
+                    config.hero_description;
+
+            }
+
+
+            if (
+                aboutText &&
+                config.about_text
+            ) {
+
+                aboutText.textContent =
+                    config.about_text;
+
+            }
+
+
+            const whatsapp =
+                normalizarWhatsApp(
+                    config.whatsapp
+                );
+
+
+            if (whatsapp) {
+
+                const mensaje =
+                    encodeURIComponent(
+                        "Hola Goticas de Felicidad, quiero información sobre sus productos."
+                    );
+
+
+                const whatsappUrl =
+                    "https://wa.me/" +
+                    whatsapp +
+                    "?text=" +
+                    mensaje;
+
+
+                const heroWhatsapp =
+                    document.getElementById(
+                        "heroWhatsapp"
+                    );
+
+
+                const whatsappContact =
+                    document.getElementById(
+                        "whatsappContact"
+                    );
+
+
+                if (heroWhatsapp) {
+
+                    heroWhatsapp.href =
+                        whatsappUrl;
+
+                }
+
+
+                if (whatsappContact) {
+
+                    whatsappContact.href =
+                        "https://wa.me/" +
+                        whatsapp;
+
+
+                    whatsappContact.textContent =
+                        whatsapp.replace(
+                            /^57(\d{3})(\d{3})(\d{4})$/,
+                            "$1 $2 $3"
+                        );
+
+                }
+
+            }
+
+
+            const tiktokUrl =
+                normalizarTikTok(
+                    config.tiktok_url
+                );
+
+
+            if (tiktokUrl) {
+
+                const tiktokContact =
+                    document.getElementById(
+                        "tiktokContact"
+                    );
+
+
+                const tiktokFooter =
+                    document.getElementById(
+                        "tiktokFooter"
+                    );
+
+
+                let usuario =
+                    tiktokUrl
+                        .split("/")
+                        .filter(Boolean)
+                        .pop() || "";
+
+
+                usuario =
+                    usuario.startsWith("@")
+                        ? usuario
+                        : "@" + usuario;
+
+
+                if (tiktokContact) {
+
+                    tiktokContact.href =
+                        tiktokUrl;
+
+                    tiktokContact.textContent =
+                        usuario;
+
+                }
+
+
+                if (tiktokFooter) {
+
+                    tiktokFooter.href =
+                        tiktokUrl;
+
+                    tiktokFooter.textContent =
+                        "TikTok: " + usuario;
+
+                }
+
+            }
+
+
+            const googleReviewButton =
+                document.getElementById(
+                    "googleReviewButton"
+                );
+
+
+            if (
+                googleReviewButton &&
+                config.google_review_url
+            ) {
+
+                googleReviewButton.href =
+                    config.google_review_url;
+
+                googleReviewButton.target =
+                    "_blank";
+
+                googleReviewButton.rel =
+                    "noopener noreferrer";
+
+            }
+
+        } catch (error) {
+
+            console.error(
+                "Error inesperado:",
+                error
+            );
+
+        }
+
+    }
+
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        cargarConfiguracionPublica
+    );
+
+</script>
 
 </body>
 
