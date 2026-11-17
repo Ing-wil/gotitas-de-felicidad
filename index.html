@@ -8,9 +8,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta name="description"
-        content="Goticas de Felicidad. Desayunos sorpresa, anchetas, detalles personalizados y decoración para cumpleaños, aniversarios y celebraciones especiales.">
+        content="Goticas de Felicidad. Desayunos sorpresa, anchetas, regalos personalizados y decoración para cumpleaños, aniversarios y celebraciones especiales.">
 
-    <title>Goticas de Felicidad | Desayunos Sorpresa y Decoración</title>
+    <meta name="keywords"
+        content="desayunos sorpresa, anchetas, regalos, decoración, cumpleaños, aniversarios, fiestas">
+
+    <meta name="author" content="Goticas de Felicidad">
+
+    <title>Goticas de Felicidad | Desayunos, Anchetas y Decoración</title>
+
 
     <style>
 
@@ -28,90 +34,133 @@
             font-family: Arial, Helvetica, sans-serif;
             background: #ffffff;
             color: #222222;
+            line-height: 1.6;
         }
 
-        /* NAVEGACIÓN */
+        :root {
+            --rojo: #e31e24;
+            --rojo-oscuro: #b9151b;
+            --verde: #20a83a;
+            --verde-oscuro: #13832a;
+            --negro: #050505;
+            --gris: #f4f4f4;
+            --blanco: #ffffff;
+        }
 
-        nav {
+
+        /* ==========================
+           NAVEGACIÓN
+        ========================== */
+
+        .navbar {
             position: sticky;
             top: 0;
             z-index: 1000;
+            background: #050505;
+            border-bottom: 3px solid var(--rojo);
+            padding: 10px 5%;
+        }
 
-            background: #000000;
-
+        .nav-container {
+            max-width: 1250px;
+            margin: auto;
             display: flex;
             align-items: center;
             justify-content: space-between;
-
-            padding: 12px 6%;
+            gap: 20px;
         }
 
-        .logo-nav {
+        .marca {
             display: flex;
             align-items: center;
             gap: 12px;
+            text-decoration: none;
         }
 
-        .logo-nav img {
+        .marca img {
             width: 55px;
             height: 55px;
             object-fit: contain;
             border-radius: 50%;
         }
 
-        .nombre-nav {
-            color: #ffffff;
+        .marca-texto {
+            color: white;
             font-size: 19px;
             font-weight: bold;
         }
 
-        .nombre-nav span {
-            color: #e31e24;
+        .marca-texto span {
+            color: var(--rojo);
         }
 
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 25px;
-        }
-
-        nav ul li a {
-            color: #ffffff;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 15px;
-        }
-
-        nav ul li a:hover {
-            color: #e31e24;
-        }
-
-
-        /* INICIO */
-
-        .hero {
-            min-height: 650px;
-
+        .menu {
             display: flex;
             align-items: center;
-            justify-content: center;
+            gap: 25px;
+            list-style: none;
+        }
 
-            padding: 70px 6%;
+        .menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .menu a:hover {
+            color: var(--rojo);
+        }
+
+        .admin-link {
+            border: 2px solid var(--verde);
+            border-radius: 25px;
+            padding: 9px 17px;
+            color: white !important;
+        }
+
+        .admin-link:hover {
+            background: var(--verde);
+            color: white !important;
+        }
+
+
+        /* ==========================
+           HERO
+        ========================== */
+
+        .hero {
+            min-height: 680px;
 
             background:
+                radial-gradient(
+                    circle at 80% 20%,
+                    rgba(227, 30, 36, 0.35),
+                    transparent 35%
+                ),
+
                 linear-gradient(
                     135deg,
                     #000000 0%,
-                    #171717 55%,
-                    #3a0000 100%
+                    #151515 55%,
+                    #300000 100%
                 );
 
             color: white;
+
+            display: flex;
+            align-items: center;
+
+            padding: 70px 5%;
+
+            overflow: hidden;
         }
 
-        .hero-contenido {
+        .hero-container {
+            max-width: 1250px;
             width: 100%;
-            max-width: 1150px;
+            margin: auto;
 
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -121,69 +170,67 @@
             gap: 60px;
         }
 
-        .hero-texto h2 {
-            color: #22a447;
-            font-size: 25px;
-            margin-bottom: 20px;
+        .hero-text {
+            max-width: 650px;
         }
 
-        .hero-texto h1 {
-            font-size: 55px;
-            line-height: 1.05;
-            margin-bottom: 20px;
+        .marca-pequena {
+            color: var(--verde);
+            font-weight: bold;
+            font-size: 22px;
+            margin-bottom: 12px;
         }
 
-        .hero-texto h1 span {
-            color: #e31e24;
+        .hero-text h1 {
+            font-size: clamp(42px, 6vw, 68px);
+            line-height: 1;
+            margin-bottom: 25px;
         }
 
-        .hero-texto p {
+        .hero-text h1 span {
+            color: var(--rojo);
+        }
+
+        .hero-text p {
             font-size: 19px;
-            line-height: 1.7;
             color: #eeeeee;
             max-width: 600px;
+            line-height: 1.7;
         }
 
         .botones {
-            margin-top: 30px;
-
             display: flex;
-            gap: 15px;
-
             flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 30px;
         }
 
-        .boton {
+        .btn {
             display: inline-block;
-
             padding: 15px 25px;
-
-            border-radius: 8px;
-
+            border-radius: 30px;
             text-decoration: none;
-
             font-weight: bold;
-
-            transition: 0.3s;
+            transition: 0.25s;
         }
 
-        .boton-rojo {
-            background: #e31e24;
+        .btn-rojo {
+            background: var(--rojo);
             color: white;
         }
 
-        .boton-rojo:hover {
-            background: #b9161b;
+        .btn-rojo:hover {
+            background: var(--rojo-oscuro);
             transform: translateY(-2px);
         }
 
-        .boton-verde {
-            background: #22a447;
+        .btn-verde {
+            background: var(--verde);
             color: white;
         }
 
-        .boton-verde:hover {
-            background: #188438;
+        .btn-verde:hover {
+            background: var(--verde-oscuro);
             transform: translateY(-2px);
         }
 
@@ -194,166 +241,211 @@
         }
 
         .hero-logo img {
-            width: 380px;
+            width: 390px;
             max-width: 100%;
-
             border-radius: 50%;
 
             box-shadow:
-                0 0 0 8px #e31e24,
-                0 0 0 16px #22a447,
-                0 20px 60px rgba(0,0,0,0.6);
+                0 0 0 7px var(--rojo),
+                0 0 0 14px var(--verde),
+                0 25px 70px rgba(0, 0, 0, 0.7);
         }
 
 
-        /* SECCIONES */
+        /* ==========================
+           SECCIONES
+        ========================== */
 
         section {
-            padding: 80px 6%;
+            padding: 85px 5%;
         }
 
-        .contenedor {
-            max-width: 1150px;
+        .container {
+            max-width: 1250px;
             margin: auto;
         }
 
-        .titulo-seccion {
+        .section-title {
             text-align: center;
-            margin-bottom: 50px;
+            max-width: 750px;
+            margin: 0 auto 50px;
         }
 
-        .titulo-seccion h2 {
-            font-size: 36px;
+        .section-title h2 {
+            font-size: 40px;
             color: #111111;
             margin-bottom: 12px;
         }
 
-        .titulo-seccion h2 span {
-            color: #e31e24;
+        .section-title h2 span {
+            color: var(--rojo);
         }
 
-        .titulo-seccion p {
+        .section-title p {
             color: #666666;
             font-size: 17px;
         }
 
 
-        /* SERVICIOS */
+        /* ==========================
+           SERVICIOS
+        ========================== */
 
         .servicios {
-            background: #f5f5f5;
+            background: var(--gris);
         }
 
-        .tarjetas {
+        .servicios-grid {
             display: grid;
-
             grid-template-columns: repeat(3, 1fr);
-
-            gap: 25px;
+            gap: 28px;
         }
 
-        .tarjeta {
+        .servicio {
             background: white;
+            border-radius: 18px;
+            overflow: hidden;
 
-            padding: 35px 25px;
-
-            text-align: center;
-
-            border-radius: 12px;
-
-            border-top: 5px solid #e31e24;
-
-            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            box-shadow:
+                0 8px 30px rgba(0,0,0,0.08);
 
             transition: 0.3s;
+
+            border-bottom: 5px solid var(--rojo);
         }
 
-        .tarjeta:hover {
-            transform: translateY(-7px);
+        .servicio:nth-child(2) {
+            border-bottom-color: var(--verde);
         }
 
-        .tarjeta:nth-child(2) {
-            border-top-color: #22a447;
+        .servicio:nth-child(3) {
+            border-bottom-color: var(--negro);
         }
 
-        .tarjeta:nth-child(3) {
-            border-top-color: #e31e24;
+        .servicio:hover {
+            transform: translateY(-8px);
         }
 
-        .icono {
-            width: 70px;
-            height: 70px;
+        .servicio-imagen {
+            height: 220px;
 
-            margin: 0 auto 20px;
-
-            border-radius: 50%;
+            background:
+                linear-gradient(
+                    135deg,
+                    #222222,
+                    #444444
+                );
 
             display: flex;
             align-items: center;
             justify-content: center;
 
-            background: #000000;
-
-            color: #ffffff;
-
-            font-size: 30px;
+            color: white;
+            font-size: 70px;
         }
 
-        .tarjeta h3 {
-            font-size: 22px;
-            margin-bottom: 15px;
+        .servicio-contenido {
+            padding: 28px;
+        }
+
+        .servicio h3 {
+            font-size: 24px;
+            margin-bottom: 12px;
             color: #111111;
         }
 
-        .tarjeta p {
+        .servicio p {
             color: #666666;
-            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .servicio-btn {
+            display: inline-block;
+            text-decoration: none;
+            color: var(--rojo);
+            font-weight: bold;
         }
 
 
-        /* NOSOTROS */
+        /* ==========================
+           GALERÍA
+        ========================== */
+
+        .galeria {
+            background: white;
+        }
+
+        .galeria-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .galeria-item {
+            min-height: 260px;
+
+            border-radius: 15px;
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #111111,
+                    #333333
+                );
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: white;
+
+            position: relative;
+        }
+
+        .galeria-item span {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+
+        /* ==========================
+           NOSOTROS
+        ========================== */
 
         .nosotros {
-            background: #ffffff;
+            background: var(--gris);
         }
 
-        .nosotros-contenido {
+        .nosotros-grid {
             display: grid;
-
             grid-template-columns: 1fr 1fr;
-
             gap: 60px;
-
             align-items: center;
         }
 
         .nosotros-texto h2 {
-            font-size: 36px;
-            margin-bottom: 20px;
+            font-size: 40px;
+            line-height: 1.1;
+            margin-bottom: 22px;
         }
 
         .nosotros-texto h2 span {
-            color: #e31e24;
+            color: var(--rojo);
         }
 
         .nosotros-texto p {
-            font-size: 17px;
-            line-height: 1.8;
             color: #555555;
-            margin-bottom: 15px;
+            font-size: 17px;
+            margin-bottom: 18px;
         }
 
         .frase {
-            border-left: 5px solid #22a447;
-
+            border-left: 5px solid var(--verde);
             padding-left: 20px;
-
             margin-top: 25px;
-
             font-size: 21px;
-
             font-weight: bold;
-
             color: #111111;
         }
 
@@ -362,164 +454,171 @@
         }
 
         .nosotros-logo img {
-            width: 320px;
+            width: 330px;
             max-width: 100%;
         }
 
 
-        /* RESEÑAS */
+        /* ==========================
+           RESEÑAS
+        ========================== */
 
         .resenas {
-            background: #f5f5f5;
+            background:
+                linear-gradient(
+                    135deg,
+                    #ffffff,
+                    #f2f2f2
+                );
+
             text-align: center;
         }
 
-        .estrellas {
-            color: #e31e24;
+        .google-box {
+            max-width: 900px;
+            margin: auto;
 
-            font-size: 35px;
+            background: white;
 
-            letter-spacing: 5px;
+            border-radius: 20px;
 
-            margin: 15px 0;
+            padding: 40px;
+
+            box-shadow:
+                0 10px 40px rgba(0,0,0,0.08);
         }
 
-        .resenas p {
-            font-size: 18px;
+        .google-logo {
+            font-size: 45px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
 
-            color: #555555;
+        .google-logo .g {
+            color: #4285F4;
+        }
 
+        .estrellas {
+            color: #f4b400;
+            font-size: 38px;
+            letter-spacing: 4px;
+            margin: 10px 0 15px;
+        }
+
+        .google-box p {
+            color: #666666;
+            font-size: 17px;
             margin-bottom: 25px;
         }
 
 
-        /* CONTACTO */
+        /* ==========================
+           CONTACTO
+        ========================== */
 
         .contacto {
             background:
                 linear-gradient(
                     135deg,
                     #000000,
-                    #250000
+                    #260000
                 );
 
             color: white;
         }
 
-        .contacto .titulo-seccion h2 {
+        .contacto .section-title h2 {
             color: white;
         }
 
-        .contacto .titulo-seccion p {
+        .contacto .section-title p {
             color: #dddddd;
         }
 
         .contacto-grid {
             display: grid;
-
             grid-template-columns: repeat(3, 1fr);
-
             gap: 25px;
         }
 
         .contacto-card {
             background: #111111;
-
             border: 1px solid #333333;
-
+            border-radius: 15px;
             padding: 30px;
-
             text-align: center;
-
-            border-radius: 10px;
         }
 
         .contacto-card h3 {
-            color: #22a447;
-
-            margin-bottom: 12px;
-        }
-
-        .contacto-card p {
-            color: #dddddd;
+            color: var(--verde);
+            margin-bottom: 10px;
         }
 
         .contacto-card a {
-            color: #ffffff;
-
+            color: white;
             text-decoration: none;
-
+            font-size: 18px;
             font-weight: bold;
         }
 
         .contacto-card a:hover {
-            color: #e31e24;
+            color: var(--rojo);
         }
 
 
-        /* PIE DE PÁGINA */
+        /* ==========================
+           FOOTER
+        ========================== */
 
         footer {
             background: #000000;
-
-            color: #ffffff;
-
+            color: white;
             text-align: center;
-
-            padding: 30px 20px;
+            padding: 35px 20px;
+            border-top: 3px solid var(--rojo);
         }
 
         footer img {
-            width: 80px;
-
+            width: 85px;
             margin-bottom: 12px;
         }
 
         footer p {
-            margin: 6px 0;
-
             color: #cccccc;
+            margin: 5px 0;
         }
 
-        .redes {
+        .social {
             margin-top: 15px;
         }
 
-        .redes a {
-            color: #ffffff;
-
+        .social a {
+            color: white;
             text-decoration: none;
-
             font-weight: bold;
         }
 
-        .redes a:hover {
-            color: #e31e24;
+        .social a:hover {
+            color: var(--rojo);
         }
 
 
-        /* MÓVIL */
+        /* ==========================
+           RESPONSIVE
+        ========================== */
 
-        @media (max-width: 850px) {
+        @media (max-width: 900px) {
 
-            nav {
-                flex-direction: column;
-                gap: 12px;
+            .menu {
+                display: none;
             }
 
-            nav ul {
-                gap: 15px;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-
-            .hero-contenido {
+            .hero-container {
                 grid-template-columns: 1fr;
-
                 text-align: center;
             }
 
-            .hero-texto p {
+            .hero-text p {
                 margin: auto;
             }
 
@@ -535,13 +634,16 @@
                 width: 280px;
             }
 
-            .tarjetas {
+            .servicios-grid {
                 grid-template-columns: 1fr;
             }
 
-            .nosotros-contenido {
-                grid-template-columns: 1fr;
+            .galeria-grid {
+                grid-template-columns: 1fr 1fr;
+            }
 
+            .nosotros-grid {
+                grid-template-columns: 1fr;
                 text-align: center;
             }
 
@@ -552,7 +654,51 @@
             .contacto-grid {
                 grid-template-columns: 1fr;
             }
+        }
 
+
+        @media (max-width: 600px) {
+
+            .navbar {
+                padding: 8px 4%;
+            }
+
+            .marca-texto {
+                font-size: 16px;
+            }
+
+            .marca img {
+                width: 48px;
+                height: 48px;
+            }
+
+            .hero {
+                padding: 55px 5%;
+            }
+
+            .hero-text h1 {
+                font-size: 43px;
+            }
+
+            .hero-text p {
+                font-size: 17px;
+            }
+
+            section {
+                padding: 65px 5%;
+            }
+
+            .section-title h2 {
+                font-size: 32px;
+            }
+
+            .galeria-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .google-box {
+                padding: 28px 18px;
+            }
         }
 
     </style>
@@ -563,68 +709,116 @@
 <body>
 
 
-<!-- NAVEGACIÓN -->
+<!-- ==========================================
+     NAVEGACIÓN
+========================================== -->
 
-<nav>
+<nav class="navbar">
 
-    <div class="logo-nav">
+    <div class="nav-container">
 
-        <img
-            src="logo.png.jpeg"
-            alt="Logo Goticas de Felicidad">
 
-        <div class="nombre-nav">
+        <a href="#inicio" class="marca">
 
-            Goticas
-            <span>de Felicidad</span>
+            <img
+                src="logo-png.2.png"
+                alt="Logo Goticas de Felicidad">
 
-        </div>
+            <div class="marca-texto">
+
+                Goticas
+                <span>de Felicidad</span>
+
+            </div>
+
+        </a>
+
+
+        <ul class="menu">
+
+            <li>
+                <a href="#inicio">
+                    Inicio
+                </a>
+            </li>
+
+            <li>
+                <a href="#servicios">
+                    Servicios
+                </a>
+            </li>
+
+            <li>
+                <a href="#galeria">
+                    Galería
+                </a>
+            </li>
+
+            <li>
+                <a href="#resenas">
+                    Reseñas
+                </a>
+            </li>
+
+            <li>
+                <a href="#nosotros">
+                    Nosotros
+                </a>
+            </li>
+
+            <li>
+                <a href="#contacto">
+                    Contacto
+                </a>
+            </li>
+
+            <li>
+
+                <a
+                    href="admin.html"
+                    class="admin-link">
+
+                    Administrador
+
+                </a>
+
+            </li>
+
+        </ul>
 
     </div>
-
-
-    <ul>
-
-        <li>
-            <a href="#inicio">Inicio</a>
-        </li>
-
-        <li>
-            <a href="#servicios">Servicios</a>
-        </li>
-
-        <li>
-            <a href="#nosotros">Nosotros</a>
-        </li>
-
-        <li>
-            <a href="#contacto">Contacto</a>
-        </li>
-
-    </ul>
 
 </nav>
 
 
 
-<!-- INICIO -->
+<!-- ==========================================
+     INICIO
+========================================== -->
 
-<header class="hero" id="inicio">
+<header
+    class="hero"
+    id="inicio">
 
-    <div class="hero-contenido">
+    <div class="hero-container">
 
 
-        <div class="hero-texto">
+        <div class="hero-text">
 
-            <h2>
+
+            <div class="marca-pequena">
+
                 GOTICAS DE FELICIDAD
-            </h2>
+
+            </div>
 
 
             <h1>
 
                 Creamos momentos
-                <span>que hacen sonreír</span>
+                <span>
+                    que hacen sonreír
+                </span>
 
             </h1>
 
@@ -632,29 +826,30 @@
             <p>
 
                 Desayunos sorpresa, anchetas, detalles
-                personalizados y decoración para hacer
-                inolvidables esos momentos especiales.
+                personalizados y decoración para convertir
+                cada celebración en un recuerdo especial.
 
             </p>
 
 
             <div class="botones">
 
+
                 <a
                     href="https://wa.me/573142955025?text=Hola%20Goticas%20de%20Felicidad,%20quiero%20información%20sobre%20sus%20productos."
-                    class="boton boton-rojo"
-                    target="_blank">
+                    target="_blank"
+                    class="btn btn-rojo">
 
-                    Escríbenos por WhatsApp
+                    WhatsApp
 
                 </a>
 
 
                 <a
                     href="#servicios"
-                    class="boton boton-verde">
+                    class="btn btn-verde">
 
-                    Conoce nuestros servicios
+                    Ver nuestros servicios
 
                 </a>
 
@@ -666,7 +861,7 @@
         <div class="hero-logo">
 
             <img
-                src="logo.png.jpeg"
+                src="logo-png.2.png"
                 alt="Goticas de Felicidad">
 
         </div>
@@ -677,104 +872,252 @@
 
 
 
-<!-- SERVICIOS -->
+<!-- ==========================================
+     SERVICIOS
+========================================== -->
 
 <section
     class="servicios"
     id="servicios">
 
-    <div class="contenedor">
+
+    <div class="container">
 
 
-        <div class="titulo-seccion">
+        <div class="section-title">
 
             <h2>
 
-                Lo que hacemos con
-                <span>amor</span>
+                Nuestros
+                <span>
+                    servicios
+                </span>
 
             </h2>
 
 
             <p>
 
-                Creamos detalles pensados para cada ocasión.
+                Encuentra el detalle perfecto para
+                cada ocasión.
 
             </p>
 
         </div>
 
 
-        <div class="tarjetas">
+        <div class="servicios-grid">
 
 
-            <div class="tarjeta">
+            <article class="servicio">
 
-                <div class="icono">
+                <div class="servicio-imagen">
+
                     ☕
+
                 </div>
 
 
-                <h3>
-                    Desayunos sorpresa
-                </h3>
+                <div class="servicio-contenido">
+
+                    <h3>
+                        Desayunos sorpresa
+                    </h3>
 
 
-                <p>
+                    <p>
 
-                    Sorprende a esa persona especial
-                    con un desayuno preparado para
-                    celebrar un momento inolvidable.
+                        Desayunos preparados para sorprender
+                        en cumpleaños, aniversarios y fechas
+                        especiales.
 
-                </p>
-
-            </div>
+                    </p>
 
 
+                    <a
+                        href="#galeria"
+                        class="servicio-btn">
 
-            <div class="tarjeta">
+                        Ver desayunos →
 
-                <div class="icono">
+                    </a>
+
+                </div>
+
+            </article>
+
+
+
+            <article class="servicio">
+
+                <div class="servicio-imagen">
+
                     🎁
+
                 </div>
 
 
-                <h3>
-                    Anchetas y detalles
-                </h3>
+                <div class="servicio-contenido">
+
+                    <h3>
+                        Anchetas y detalles
+                    </h3>
 
 
-                <p>
+                    <p>
 
-                    Creamos anchetas y regalos
-                    personalizados para cumpleaños,
-                    aniversarios y fechas especiales.
+                        Detalles personalizados para regalar
+                        algo especial a las personas que más
+                        quieres.
 
-                </p>
+                    </p>
+
+
+                    <a
+                        href="#galeria"
+                        class="servicio-btn">
+
+                        Ver detalles →
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+
+            <article class="servicio">
+
+                <div class="servicio-imagen">
+
+                    🎈
+
+                </div>
+
+
+                <div class="servicio-contenido">
+
+                    <h3>
+                        Decoración y fiestas
+                    </h3>
+
+
+                    <p>
+
+                        Decoración para cumpleaños, aniversarios,
+                        celebraciones y diferentes tipos de eventos.
+
+                    </p>
+
+
+                    <a
+                        href="#galeria"
+                        class="servicio-btn">
+
+                        Ver decoraciones →
+
+                    </a>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==========================================
+     GALERÍA
+========================================== -->
+
+<section
+    class="galeria"
+    id="galeria">
+
+
+    <div class="container">
+
+
+        <div class="section-title">
+
+            <h2>
+
+                Algunos de nuestros
+                <span>
+                    trabajos
+                </span>
+
+            </h2>
+
+
+            <p>
+
+                Muy pronto podrás ver aquí nuestros
+                desayunos, anchetas y decoraciones.
+
+            </p>
+
+        </div>
+
+
+        <div class="galeria-grid">
+
+
+            <div class="galeria-item">
+
+                <span>
+                    Desayunos sorpresa
+                </span>
 
             </div>
 
 
+            <div class="galeria-item">
 
-            <div class="tarjeta">
+                <span>
+                    Anchetas y detalles
+                </span>
 
-                <div class="icono">
-                    🎈
-                </div>
-
-
-                <h3>
-                    Decoración
-                </h3>
+            </div>
 
 
-                <p>
+            <div class="galeria-item">
 
-                    Decoramos tus celebraciones para
-                    que cada espacio tenga ese toque
-                    especial que estabas imaginando.
+                <span>
+                    Decoraciones
+                </span>
 
-                </p>
+            </div>
+
+
+            <div class="galeria-item">
+
+                <span>
+                    Cumpleaños
+                </span>
+
+            </div>
+
+
+            <div class="galeria-item">
+
+                <span>
+                    Celebraciones
+                </span>
+
+            </div>
+
+
+            <div class="galeria-item">
+
+                <span>
+                    Momentos especiales
+                </span>
 
             </div>
 
@@ -786,48 +1129,55 @@
 
 
 
-<!-- NOSOTROS -->
+<!-- ==========================================
+     NOSOTROS
+========================================== -->
 
 <section
     class="nosotros"
     id="nosotros">
 
-    <div class="contenedor">
 
-        <div class="nosotros-contenido">
+    <div class="container">
+
+
+        <div class="nosotros-grid">
 
 
             <div class="nosotros-texto">
 
+
                 <h2>
 
-                    Un detalle puede cambiar
-                    <span>todo un día</span>
+                    Detalles que hacen
+                    <span>
+                        sonreír
+                    </span>
 
                 </h2>
 
 
                 <p>
 
-                    En Goticas de Felicidad creemos
-                    que los pequeños detalles pueden
-                    convertirse en grandes recuerdos.
+                    En Goticas de Felicidad creamos
+                    detalles para acompañar esos momentos
+                    que quieres convertir en recuerdos.
 
                 </p>
 
 
                 <p>
 
-                    Preparamos cada pedido pensando
-                    en la persona que lo recibirá y en
-                    el momento que quieres celebrar.
+                    Cada desayuno, ancheta o decoración
+                    se prepara pensando en la ocasión
+                    y en la persona que lo recibirá.
 
                 </p>
 
 
                 <div class="frase">
 
-                    Creamos detalles que hacen sonreír.
+                    Creamos momentos que hacen sonreír.
 
                 </div>
 
@@ -837,8 +1187,8 @@
             <div class="nosotros-logo">
 
                 <img
-                    src="logo.png.jpeg"
-                    alt="Logo Goticas de Felicidad">
+                    src="logo-png.2.png"
+                    alt="Goticas de Felicidad">
 
             </div>
 
@@ -850,30 +1200,56 @@
 
 
 
-<!-- RESEÑAS -->
+<!-- ==========================================
+     RESEÑAS GOOGLE
+========================================== -->
 
-<section class="resenas">
+<section
+    class="resenas"
+    id="resenas">
 
-    <div class="contenedor">
 
-        <div class="titulo-seccion">
+    <div class="container">
+
+
+        <div class="section-title">
 
             <h2>
 
-                Lo que dicen nuestros
-                <span>clientes</span>
+                Reseñas de nuestros
+                <span>
+                    clientes
+                </span>
 
             </h2>
 
+        </div>
+
+
+        <div class="google-box">
+
+
+            <div class="google-logo">
+
+                <span class="g">
+                    G
+                </span>
+
+                Google
+
+            </div>
+
 
             <div class="estrellas">
+
                 ★★★★★
+
             </div>
 
 
             <p>
 
-                Tu experiencia nos ayuda a seguir
+                Tu opinión nos ayuda a seguir
                 creando momentos felices.
 
             </p>
@@ -881,9 +1257,9 @@
 
             <a
                 href="#"
-                class="boton boton-rojo">
+                class="btn btn-rojo">
 
-                Déjanos tu reseña en Google
+                Ver reseñas en Google
 
             </a>
 
@@ -895,28 +1271,34 @@
 
 
 
-<!-- CONTACTO -->
+<!-- ==========================================
+     CONTACTO
+========================================== -->
 
 <section
     class="contacto"
     id="contacto">
 
-    <div class="contenedor">
+
+    <div class="container">
 
 
-        <div class="titulo-seccion">
+        <div class="section-title">
 
             <h2>
 
                 ¿Qué quieres
-                <span>celebrar?</span>
+                <span>
+                    celebrar?
+                </span>
 
             </h2>
 
 
             <p>
 
-                Escríbenos y cuéntanos qué tienes en mente.
+                Escríbenos y cuéntanos qué tienes
+                pensado.
 
             </p>
 
@@ -981,8 +1363,8 @@
 
                 <p>
 
-                    Cuéntanos qué necesitas y te ayudaremos
-                    a preparar tu celebración.
+                    Escríbenos para conocer nuestros
+                    productos y opciones de decoración.
 
                 </p>
 
@@ -996,26 +1378,33 @@
 
 
 
-<!-- FOOTER -->
+<!-- ==========================================
+     FOOTER
+========================================== -->
 
 <footer>
 
+
     <img
-        src="logo.png.jpeg"
-        alt="Goticas de Felicidad">
+        src="logo-png.2.png"
+        alt="Logo Goticas de Felicidad">
 
 
     <p>
+
         © 2026 Goticas de Felicidad
+
     </p>
 
 
     <p>
+
         Desayunos sorpresa, anchetas y decoración
+
     </p>
 
 
-    <div class="redes">
+    <div class="social">
 
         <a
             href="https://www.tiktok.com/@johannarojas1989"
@@ -1026,6 +1415,7 @@
         </a>
 
     </div>
+
 
 </footer>
 
